@@ -1,0 +1,23 @@
+<%= form_tag(ceremonies_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Ceremony Name" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+
+<% if @ceremonies.present? %>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Ceremony Name</th>
+				<th>Location Preference</th>
+				<th>Agreement Signed</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+  <%= render @ceremonies %>
+  	</table>
+</div>
+<% else %>
+  <p>There are no Ceremony containing the name <%= params[:search] %>.</p>
+<% end %>

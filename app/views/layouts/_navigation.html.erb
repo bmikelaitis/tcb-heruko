@@ -1,0 +1,64 @@
+<header class ="navbar navbar-fixed-top navbar-default">
+   <div class="container ">
+          
+           <%= link_to "Tucson Clean & Beautiful PTS", root_path, class:"btn btn-lg btn-success", id: "logo" %>
+           
+           <% if logged_in? %>
+            <div class="nav_item">
+            <%= link_to "Create New Organization", new_organization_path, class:"btn btn-default btn-primary" %>
+            </div>
+            <% end %>
+
+            <% if logged_in? %>
+                <% else %>
+                <div class="nav_item1">
+                <%= link_to "Create a New Account", new_volunteer_path, class:"btn btn-default btn-primary" %>
+                </div>
+            <% end %>
+            
+           
+           <% if logged_in? %>
+             <ul style="list-style-type: none;" class="nav_item1">
+				           <li class="dropdown">
+					            <%= link_to "#", class: "btn btn-success border-danger dropdown-toggle", "data-toggle" => "dropdown" do %>
+					            <%= current_user.firstName %> <b class="caret"></b>
+					            <% end %>
+					           <ul class="dropdown-menu">
+						           <li><%= link_to "Edit Profile", edit_volunteer_path(current_user) %></li>
+						           <li><%= link_to "Change Password", password_path(current_user) %></li>
+						           <li><%= link_to "Submit New Organization", new_organization_path %></li>
+						           <li><%= link_to "Join an Organization", join_Organization_path %></li>
+						           
+						           <li class="divider"></li>
+						           <li><%= link_to "Logout", logout_path %></li>
+					           </ul>
+				           </li>
+			          </ul>
+			          
+            <% end %>
+            
+          <% if current_user.try(:admin?) %>
+
+                   <ul style="list-style-type: none;" class="nav_item1">
+				           <li class="dropdown">
+					            <%= link_to "#", class: "btn btn-success border-danger dropdown-toggle", "data-toggle" => "dropdown" do %>
+					            Admin <b class="caret"></b>					            
+					            <% end %>
+					           <ul class="dropdown-menu">
+					           	   <li><%= link_to "Create a new Tool", new_tool_path %></li>
+					           	   <li><%= link_to "Create a new Site", new_site_path %></li>
+						           <li><%# link_to "View Dashboard", dashboard_path %></li>
+						           <li><%# link_to "View System Users", users_path %></li>
+						           <li><%# link_to "View Buyer Options", purchasers_path %></li>
+						           <li><%# link_to "View Subject Options", subjects_path %></li>
+						           <li><%# link_to "View Purchase Options", puroptions_path %></li>
+						           <li><%# link_to "View Vendor Options", vendors_path %></li>
+						           <li><%# link_to "View Department Options", departments_path %></li>
+					           </ul>
+				           </li>
+			          </ul>
+
+           <% end %>
+            
+   </div>
+</header>

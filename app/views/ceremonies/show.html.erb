@@ -1,0 +1,50 @@
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Ceremony Name</th>
+				<th>Location Preference</th>
+				<th>Agreement Signed</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+<tbody>
+			<tr>
+				<td><%= @ceremony.ceremonyName %></td>
+				<td><%= @ceremony.locationPreference %></td>
+				<td><%= @ceremony.agreementSigned %></td>
+				<td><%= @ceremony.date %></td>
+			
+                <td><%= link_to ceremonies_path(@ceremony) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>            
+              		  </td>
+			</tr>		
+</tbody>
+	
+
+<div class="row">
+	<div class="col-md-8">
+		<%= render 'shared/page_title', title: "Create an for the Ceremony" %>
+		
+		
+			  <%= form_for(@ceremony) do |f| %>
+			
+			  <%= f.fields_for :ceremonyaward do |s| %>
+			    <div class="field">
+			      <h5>Ceremony Award Title:</h5>
+			      <%= s.text_field :ceremonyAwardTitle %>
+			      <h5>Ceremony Award Info:</h5>
+				  <%= s.text_field :ceremonyAwardInfo %>
+			    </div>
+			  
+	
+			
+				<%= f.submit "Create Award", class: "btn btn-success" %>
+				<% end %>
+				<% end %>
+				
+
+			
+	</div>
+</div>

@@ -1,0 +1,19 @@
+<tbody>
+			<tr>
+				<td><%= organization.organizationName %></td>
+				<td><%= organization.organizationStreet %></td>
+				<td><%= organization.organizationCity %></td>
+				<td><%= organization.organizationState %></td>
+				<td><%= organization.organizationZip %></td>
+				<td><%= organization.organizationPhone %></td>
+			
+                <td><%= link_to organization_path(organization) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>            
+              		  <%= link_to edit_organization_path(organization) do %>
+                        <i class="glyphicon glyphicon-cog" style="color:grey"></i>
+                    <% end %></td> </td>
+			</tr>		
+</tbody>
+	
+	

@@ -1,0 +1,16 @@
+<%= render 'shared/errors', obj: @park %>
+<div>
+	<div>
+		<%= form_for @park do |f| %>
+		<%= f.hidden_field :id, :value => params[:param_1] %>
+		<h5>Park Type:</h5>
+		<%= f.text_field :parkType %>
+		<h5>Park Size in Acres:</h5>
+		<%= f.text_field :acres %>
+
+	
+		<%= f.submit(@park.new_record? ? "Register Park" : "Edit Park") %>
+		<% end %>
+	</div>
+</div>
+

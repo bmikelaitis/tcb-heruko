@@ -1,0 +1,17 @@
+<tbody>
+			<tr>
+				<td><%= ceremony.ceremonyName %></td>
+				<td><%= ceremony.locationPreference %></td>
+				<td><%= ceremony.agreementSigned %></td>
+				<td><%= ceremony.date %></td>
+			
+                <td><%= link_to ceremony_path(ceremony) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>            
+              		  <%= link_to edit_ceremony_path(ceremony) do %>
+                        <i class="glyphicon glyphicon-cog" style="color:grey"></i>
+                    <% end %></td> </td>
+			</tr>		
+</tbody>
+	
+	

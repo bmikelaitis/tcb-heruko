@@ -1,0 +1,16 @@
+<%= render 'shared/errors', obj: @wash %>
+<div>
+	<div>
+		<%= form_for @wash do |f| %>
+		<%= f.hidden_field :id, :value => params[:param_1] %>
+		<h5>Water Flow:</h5>
+		<%= f.text_field :waterFlow %>
+		<h5>Miles:</h5>
+		<%= f.text_field :Miles %>
+
+	
+		<%= f.submit(@wash.new_record? ? "Register Wash" : "Edit Wash") %>
+		<% end %>
+	</div>
+</div>
+

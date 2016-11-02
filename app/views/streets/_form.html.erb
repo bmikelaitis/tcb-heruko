@@ -1,0 +1,19 @@
+<%= render 'shared/errors', obj: @street %>
+<div>
+	<div>
+		<%= form_for @street do |f| %>
+		<%= f.hidden_field :id, :value => params[:param_1] %>
+		<h5>Start:</h5>
+		<%= f.text_field :start %>
+		<h5>End:</h5>
+		<%= f.text_field :end %>
+		<h5>Direction:</h5>
+		<%= f.text_field :direction %>
+		<h5>Miles:</h5>
+		<%= f.text_field :miles %>
+	
+		<%= f.submit(@street.new_record? ? "Register Site" : "Edit Site") %>
+		<% end %>
+	</div>
+</div>
+

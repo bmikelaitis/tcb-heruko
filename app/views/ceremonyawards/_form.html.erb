@@ -1,0 +1,13 @@
+<%= render 'shared/errors', obj: @ceremonyaward %>
+<div>
+	<div>
+		<%= form_for @ceremonyaward do |f| %>
+		<h5>Organization Name:</h5>
+		<%= f.text_field :ceremonyAwardTitle %>
+		<h5>Stree Address:</h5>
+		<%= f.text_field :ceremonyAwardInfo %>
+	
+		<%= f.submit(@ceremonyaward.new_record? ? "Create" : "Edit Award") %>
+		<% end %>
+	</div>
+</div>

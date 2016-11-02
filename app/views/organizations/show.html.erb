@@ -1,0 +1,18 @@
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Ceremony Award Title</th>
+				<th>Ceremony Award Info</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= @ceremonyaward.ceremonyAwardTitle %></td>
+				<td><%= @ceremonyaward.ceremonyAwardInfo %></td>
+
+                <%= link_to edit_ceremonyaward_path do %>
+                        <i class="glyphicon glyphicon-cog" style="color:grey"></i>
+                    <% end %></td> </td>
+			</tr>		
+</tbody>

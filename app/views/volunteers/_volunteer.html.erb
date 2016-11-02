@@ -1,0 +1,22 @@
+<tbody>
+			<tr>
+				<td><%= volunteer.firstName %></td>
+				<td><%= volunteer.lastName %></td>
+				<td><%= volunteer.emailSignIn %></td>
+				<td><%= volunteer.title %></td>
+				<td><% if volunteer.admin == true %>
+                        <div class="glyphicon glyphicon-ok"></div>
+                    <% else %>
+                        <div class="glyphicon glyphicon-remove" style="color:red"></div>
+                    <% end %></td>
+			
+                <td><%= link_to volunteer_path(volunteer) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>            
+              		  <%= link_to edit_volunteer_path(volunteer) do %>
+                        <i class="glyphicon glyphicon-cog" style="color:grey"></i>
+                    <% end %></td> </td>
+			</tr>		
+</tbody>
+	
+

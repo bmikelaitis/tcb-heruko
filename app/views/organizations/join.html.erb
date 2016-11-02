@@ -1,0 +1,33 @@
+<%= form_tag(join_Organization_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Organization Name" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @organizations.present? %>
+
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Organization Name</th>
+                <th> </br> Join</th>
+			</tr>
+		</thead>
+        <tbody>
+			<tr><% @organizations.each do |organization| %>
+				<td><%= organization.organizationName %></td>
+			
+                <td><%= link_to organization_path(organization) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>            
+              		  <%= link_to edit_organization_path(organization) do %>
+                        <i class="glyphicon glyphicon-cog" style="color:grey"></i>
+                    <% end %></td> </td>
+                    <% end %>
+			</tr>		
+        </tbody>
+  	</table>
+</div>
+<% else %>
+  <p>There are no Organization containing the name <%= params[:search] %>.</p>
+<% end %>

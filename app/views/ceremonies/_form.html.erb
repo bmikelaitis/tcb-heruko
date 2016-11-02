@@ -1,0 +1,19 @@
+<%= render 'shared/errors', obj: @ceremony %>
+<div>
+	<div>
+		<%= form_for @ceremony do |f| %>
+		<h5>Ceremony Name:</h5>
+		<%= f.text_field :ceremonyName %>
+		<h5>Location Preference:</h5>
+		<%= f.text_field :locationPreference %>
+		<h5>Ceremony Date:</h5>
+        <%= f.text_field :date, :id => "datepicker", :value => Date.today %>
+	
+		<%= f.submit(@ceremony.new_record? ? "Create" : "Edit Ceremony") %>
+		<% end %>
+	</div>
+</div>
+
+<script>
+$('#datepicker').datepicker({format: 'yyyy-mm-dd'});
+</script>

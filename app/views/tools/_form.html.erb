@@ -1,0 +1,16 @@
+<%= render 'shared/errors', obj: @tool %>
+<div>
+	<div>
+		<%= form_for @tool do |f| %>
+		<h5>Tool Name:</h5>
+		<%= f.text_field :toolName %>
+		<h5>Total Tool Quantity:</h5>
+		<%= f.text_field :totalQuantity %>
+		<h5>Tool Description:</h5>
+		<%= f.text_field :description %>
+
+	
+		<%= f.submit(@tool.new_record? ? "Create" : "Edit Tool") %>
+		<% end %>
+	</div>
+</div>

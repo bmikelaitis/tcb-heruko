@@ -1,0 +1,25 @@
+<%= form_tag(organizations_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Organization Name" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @organizations.present? %>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Organization Name</th>
+				<th>Stree Address</th>
+				<th>City</th>
+				<th>State</th>
+				<th>Zip Code</th>
+				<th>Phone Number</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+  <%= render @organizations %>
+  	</table>
+</div>
+<% else %>
+  <p>There are no Organization containing the name <%= params[:search] %>.</p>
+<% end %>

@@ -1,0 +1,21 @@
+<%= form_tag(tools_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Tool Name" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @tools.present? %>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Tool Name</th>
+				<th>Total Tool Quantity</th>
+				<th>Tool Description</th>
+			</tr>
+		</thead>
+  <%= render @tools %>
+  	</table>
+</div>
+<% else %>
+  <p>There are no tools containing the name <%= params[:search] %>.</p>
+<% end %>

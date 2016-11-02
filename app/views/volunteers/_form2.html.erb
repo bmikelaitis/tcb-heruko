@@ -1,0 +1,37 @@
+<%= render 'shared/errors', obj: @volunteer %>
+<div>
+	<div>
+		<%= form_for @volunteer do |f| %>
+		<h5>First Name:</h5>
+		<%= f.text_field :firstName %>
+		<h5>Last Name:</h5>
+		<%= f.text_field :lastName %>
+		<h5>Email:</h5>
+		<%= f.email_field :emailSignIn %>
+		<h5>Job Title:</h5>
+		<%= f.text_field :title %>
+		<h5>Phone:</h5>
+		<%= f.text_field :phone %>
+	
+		<%= f.submit(@volunteer.new_record? ? "Register" : "Edit Profile") %>
+		<% end %>
+	</div>
+</div>
+
+<% if current_user.try(:admin?) %>
+	<div class="container center">
+		<%= render 'shared/errors', obj: @volunteer %>
+			<button type="button" class="btn btn-lg btn-primary collapsed" data-toggle="collapse" data-target="#demo">Admin Password Change</button>
+	  			<div id="demo" class="collapse">
+	    			<div class="row user_info">
+						<div class="well col-xs- col-lg-8 col-lg-offset-2 col-xs-offset-2 center">
+							<%= form_for @volunteer do |f| %>
+								<h5 class="bold left line_Up">Password:</h5>
+								<%= f.password_field :password%>
+								<%= f.submit(@volunteer.new_record? ? "Register" : "Change Password", class: "btn btn-success") %>
+								<% end %>
+	    				</div>
+	    			</div>	
+	  			</div>
+	</div>
+<% end %>
