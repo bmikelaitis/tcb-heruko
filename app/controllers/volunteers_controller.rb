@@ -36,7 +36,7 @@ class VolunteersController < ApplicationController
 		@volunteer = Volunteer.find(params[:id])
 		if @volunteer.update(volunteer_params)
 			flash[:success] = "Your account has been updated succesfully"
-			#redirect_to receipts_path(@user) #TODO change to users_path
+		redirect_to volunteer_path(@volunteer) #TODO change to users_path
 		else
 			render 'edit'
 		end

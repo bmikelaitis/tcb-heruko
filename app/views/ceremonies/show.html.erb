@@ -21,30 +21,22 @@
               		  </td>
 			</tr>		
 </tbody>
-	
 
-<div class="row">
-	<div class="col-md-8">
-		<%= render 'shared/page_title', title: "Create an for the Ceremony" %>
-		
-		
-			  <%= form_for(@ceremony) do |f| %>
-			
-			  <%= f.fields_for :ceremonyaward do |s| %>
-			    <div class="field">
-			      <h5>Ceremony Award Title:</h5>
-			      <%= s.text_field :ceremonyAwardTitle %>
-			      <h5>Ceremony Award Info:</h5>
-				  <%= s.text_field :ceremonyAwardInfo %>
-			    </div>
-			  
-	
-			
-				<%= f.submit "Create Award", class: "btn btn-success" %>
-				<% end %>
-				<% end %>
-				
 
-			
-	</div>
-</div>
+		
+
+<ul>
+  <%= render(partial: 'ceremonyawards/ceremonyaward', collection: @ceremony.ceremonyawards) %>
+</ul>
+
+<ul>
+  <%= render(partial: 'ceremonynotes/ceremonynote', collection: @ceremony.ceremonynotes) %>
+</ul>
+
+<ul>
+  <%= render(partial: 'signs/sign', collection: @ceremony.signs) %>
+</ul>
+
+<%= render 'addnotes' %>
+<%= render 'addsigns' %>
+<%= render 'addawards' %>

@@ -1,0 +1,41 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">Add Awards</button>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel1">Add Award</h4>
+      </div>
+      		<%= form_for ([@ceremony, Ceremonyaward.new]) do |f| %>
+		<%= f.hidden_field :ceremony_id, :value => @ceremony.id %>
+
+      <div class="modal-body">
+          <div class="form-group">
+            <h5>Ceremony Award Title:</h5>
+		    <%= f.text_field :ceremonyAwardTitle %>
+          </div>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <h5>Ceremony Award Info:</h5>
+		    <%= f.text_field :ceremonyAwardInfo %>
+          </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= f.submit(Ceremonyaward.new ? "Create" : "Edit Award", class: "btn btn-default") %>
+		<% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+
+
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+</script>

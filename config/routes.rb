@@ -8,17 +8,30 @@ Rails.application.routes.draw do
   get '/logout', to: 'logins#destroy'
   get '/password', to: 'volunteers#password'
   
+  get '/queryone', to: 'queries#one'
+  get '/request', to: 'projects#project'
+  get '/assign', to: 'projects#assign'
+  
   resources :volunteers
-  resources :organizations
   resources :tools
   resources :sites
   resources :streets
   resources :parks 
   resources :washes
-  resources :ceremonies
+
   resources :ceremonies do
     resources :ceremonyawards
-end
+    resources :ceremonynotes
+    resources :signs
+  end
+  
+  resources :organizations do
+    resources :projects
+  end
+  resources :projects do
+    resources :ceremonies
+    resources :sites
+  end
   get '/join-Organization', to: 'organizations#join'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

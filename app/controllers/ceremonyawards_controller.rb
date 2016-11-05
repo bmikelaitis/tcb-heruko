@@ -9,29 +9,25 @@ class CeremonyawardsController < ApplicationController
 	# 	@review = Review.new
 	# end
 	
-def index
+    def index
 		
-end
+    end
 	def new
 		@ceremonyaward = Ceremonyaward.new
 	end
-
-
-def create
-    
-    @ceremonyaward = @ceremonyaward.new(award_params)
-    @ceremony = Ceremony.find(params[:ceremony_id])
-
-	if @ceremonyaward.save
-			flash[:success] = "Award was created succesfully"
-    	redirect_to ceremonyaward_path(@ceremony)
-    else
-			flash[:danger] = "The award could not be saved"
-			redirect_to :back
-	end
 	
-			
-end
+    def create
+      @ceremonyaward = Ceremonyaward.new(award_params)
+
+      if @ceremonyaward.save
+        redirect_to :back
+        flash[:success] =  'Your Award was successfully saved!'
+      else
+        redirect_to :back
+        flash[:success] =  "Your Award wasn't posted!"
+      end
+    end
+
 
 def update
         @ceremony = Ceremony.find(params[:ceremony_id])
@@ -48,7 +44,12 @@ def update
  
   private
     def award_params
-      params.require(:ceremonyaward).permit(:ceremonyAwardTitle, :ceremonyAwardInfo)
+      params.require(:ceremonyaward).permit(:ceremony_id, :ceremonyAwardTitle, :ceremonyAwardInfo)
+    end
+    
+    def find_award
+      @ceremonyaward = Ceremonyaward.find_by_id(params[:ceremonyaward_id]) if params[:ceremonyaward_id]
+      @ceremonyaward = Ceremony.find_by_id(params[:ceremony_id]) if params[:ceremony_id]
     end
     
 end

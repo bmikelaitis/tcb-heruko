@@ -2,7 +2,7 @@
 <div>
 	<div>
 		<%= form_for @ceremony do |f| %>
-		<%= f.hidden_field :project_id, :value => @project.id %>
+		<%= f.hidden_field :project_id %>
 		<h5>Ceremony Name:</h5>
 		<%= f.text_field :ceremonyName %>
 		<h5>Location Preference:</h5>

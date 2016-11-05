@@ -9,6 +9,7 @@ class CeremoniesController < ApplicationController
 	end
 
 	def new
+		@project = Project.find( params[:project_id])
 		@ceremony = Ceremony.new
 	end
 
@@ -30,7 +31,7 @@ class CeremoniesController < ApplicationController
 		@ceremony = Ceremony.find(params[:id])
 		if @ceremony.update(ceremony_params)
 			flash[:success] = "The Ceremony has been updated succesfully"
-			#redirect_to receipts_path(@user) #TODO change to users_path
+			redirect_to ceremony_path(@ceremony)
 		else
 			render 'edit'
 		end
@@ -38,13 +39,13 @@ class CeremoniesController < ApplicationController
 
 	def show
 		@ceremony = Ceremony.find(params[:id])
-		#@receipts = @user.receipts.order("updated_at DESC")
+		
 
 	end
 
 private
 	def ceremony_params
-		params.require(:ceremony).permit(:ceremonyName, :locationPreference, :agreementSigned, :date)
+		params.require(:ceremony).permit(:project_id, :ceremonyName, :locationPreference, :agreementSigned, :date)
 	end
 
 end

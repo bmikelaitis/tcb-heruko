@@ -35,7 +35,7 @@ gem  'strftime'
 gem 'multiple_table_inheritance', '~> 0.2.1'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'mysql2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

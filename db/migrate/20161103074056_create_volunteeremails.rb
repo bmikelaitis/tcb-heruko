@@ -1,6 +1,6 @@
-class CreateVolunteerEmails < ActiveRecord::Migration
+class CreateVolunteeremails < ActiveRecord::Migration
   def change
-    create_table :volunteer_emails do |t|
+    create_table :volunteeremails do |t|
       t.integer :volunteer_id
       t.string :email
       t.timestamps
