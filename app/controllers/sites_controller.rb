@@ -1,4 +1,11 @@
 class SitesController < ApplicationController 
+	
+	
+	before_filter :assign_function
+
+def assign_function
+@var = 0
+end
 	def index
 		@sites = Site.all
 		if params[:search]

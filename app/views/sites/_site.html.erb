@@ -7,7 +7,16 @@
 				<td><%= site.siteZip %></td>
 				<td><%= site.cityWardNumber %></td>
 				<td><%= site.countyDistrict %></td>
-				
+				<% if @var == 1%>
+				<td><%= site.status %></td>
+				<td>   
+				<%= form_for @project do |f| %>
+		<%= f.hidden_field :site_id, :value => site.id %>
+		
+		<%= f.submit "Assign Site"%>
+		<% end %>
+				</td>
+				<% end %>
 			</tr>		
 </tbody>
 	

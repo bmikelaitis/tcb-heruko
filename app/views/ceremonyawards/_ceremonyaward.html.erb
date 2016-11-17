@@ -1,2 +1,6 @@
-<%= ceremonyaward.ceremonyAwardTitle %>
-<%= ceremonyaward.ceremonyAwardInfo %>
+
+<tr>
+	<td><%= ceremonyaward.ceremonyAwardTitle %></td>
+	<td><%= ceremonyaward.ceremonyAwardInfo %></td>
+    <td> <%= time_ago_in_words(ceremonyaward.created_at) %> ago</td>
+</tr>		

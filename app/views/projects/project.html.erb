@@ -1,20 +1,16 @@
-<% if @projects.present? %>
 <div class="table-container">
 	<table class="data-table">
 		<thead>
 			<tr>
-				<th>Site Street</th>
-				<th>Cross-Streets</th>
-				<th>County</th>
-				<th>Zip Code</th>
-				<th>City Ward Number</th>
-				<th>County District</th>
-
+				<th>Project Name</th>
+				<th>Organization Name</th>
+				<th>Project Location</th>
+				<th>Yearly Participants</th>
+				<th>If Canceled</th>
+				<th>Start Date</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
   <%= render @projects %>
   	</table>
 </div>
-<% else %>
-  <p>There are no new Project requests at this time.</p>
-<% end %>

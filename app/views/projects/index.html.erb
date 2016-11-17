@@ -1,0 +1,25 @@
+<%= form_tag(projects_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Project Name" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @projects.present? %>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Project Name</th>
+				<th>Organization Name</th>
+				<th>Project Location</th>
+				<th>Yearly Participants</th>
+				<th>If Canceled</th>
+				<th>Start Date</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+  <%= render @projects %>
+  	</table>
+</div>
+<% else %>
+  <p>There are no Projects containing the name <%= params[:search] %>.</p>
+<% end %>

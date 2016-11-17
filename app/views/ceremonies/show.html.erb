@@ -21,21 +21,58 @@
               		  </td>
 			</tr>		
 </tbody>
+</table>
+</div>
 
 
 		
 
-<ul>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Ceremony Award Title</th>
+				<th>Ceremony Award Information</th>
+				<th>Date Created</th>
+			</tr>
+		</thead>
+<tbody>
   <%= render(partial: 'ceremonyawards/ceremonyaward', collection: @ceremony.ceremonyawards) %>
-</ul>
+</tbody>
+</table>
+</div>
 
-<ul>
+
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Ceremony Notes</th>
+				<th>Date Created</th>
+			</tr>
+		</thead>
+<tbody>
   <%= render(partial: 'ceremonynotes/ceremonynote', collection: @ceremony.ceremonynotes) %>
-</ul>
+</tbody>
+</table>
+</div>
 
-<ul>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Miles Needed</th>
+				<th>Sign Placement</th>
+				<th>Sign Location</th>
+				<th>Date Created</th>
+			</tr>
+		</thead>
+<tbody>
   <%= render(partial: 'signs/sign', collection: @ceremony.signs) %>
-</ul>
+</tbody>
+</table>
+</div>
+
 
 <%= render 'addnotes' %>
 <%= render 'addsigns' %>

@@ -1,1 +1,15 @@
-<%= project.projectName %>
+<tr>
+<td><%= project.projectName %> </td>
+<td><%= project.organization.organizationName %> </td>
+<td><%= project.projectLocation %> </td>
+<td><%= project.yearlyParticipants %> </td>
+<td><% if project.ifCanceled == true %>
+                        <div class="glyphicon glyphicon-ok"></div>
+                    <% else %>
+                        <div class="glyphicon glyphicon-remove" style="color:red"></div>
+                    <% end %></td>
+<td><%= project.startDate.try(:strftime, "%m/%d/%Y")%> </td>
+<td><%= link_to project_path(project) do %>
+                <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+<% end %>        
+</tr>

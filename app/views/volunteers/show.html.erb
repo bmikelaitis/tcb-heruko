@@ -30,19 +30,31 @@
                     <% end %></td> </td>
 			</tr>		
 </tbody>
+
 <div>
-<% if require_same_user(@volunteer) %>
-<% if current_user.try(:admin?) %>
 
-	<%= link_to "System Users", volunteers_path %>
-    <%= link_to "Organizations", organizations_path %>
-    <%= link_to "Tools", tools_path %>
-    <%= link_to "Sites", sites_path %>
-    <%= link_to "Ceremonies", ceremonies_path %>
-    <%= link_to "Project Requests", request_path %>
-    <%= link_to "Projects", projects_path %>
+<% if same_admin_user(@volunteer) %>
+<h2>Admin Dashboard</h2>
+	<li><%= link_to "System Users", volunteers_path %></li>
+    <li><%= link_to "Organization Overview", organizations_path %></li>
+    <li><%= link_to "Tool Overview", tools_path %></li>
+    <li><%= link_to "Sites Overview", sites_path %></li>
+    <li><%= link_to "Ceremonies Overview", ceremonies_path %></li>
+    <li><%= link_to "Projects without a Site", request_path %></li>
+    <li><%= link_to "Project Reports Overview", reports_path %></li>
+    <li><%= link_to "Short-Term Events Overview", projects_path %></li>
+    <li><%= link_to "Evaluation Report Overview", projects_path %></li>
+    <li><%= link_to "Generate TCB Reports", queries_path %></li>
 
-
-<% end %>
 <% end %>
 </div>
+
+<div class="col-lg-3 col-xs-3">
+        <% if current_user.try(:admin?)  %>
+    	    <%= form_for @volunteer do |f| %>
+                <h5>Admin User? <%= f.check_box :admin %></h5>
+                <%= f.submit(@volunteer.new_record? ? "Register" : "Set Privileges", class: "btn btn-success") %>
+		    <% end %>
+        <% else %>
+        <% end %>
+</div> 

@@ -24,6 +24,7 @@
                     <% end %></td> </td>
 			</tr>		
 </tbody>
+</table>
 
 <div class="row">
 	<div class="col-md-8">
@@ -48,10 +49,20 @@
 			
 	</div>
 </div>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Project Name</th>
+				<th>Go To Project</th>
 
-<ul>
-  <%= render(partial: 'projects/project', collection: @organization.projects) %>
-</ul>
+			</tr>
+		</thead>
+    <%= render(partial: 'projects/project', collection: @organization.projects) %>
+  	</table>
+</div>
+
+
 
 <script>
 $('#datepicker').datepicker({format: 'yyyy-mm-dd'});

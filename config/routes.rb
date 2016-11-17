@@ -8,9 +8,21 @@ Rails.application.routes.draw do
   get '/logout', to: 'logins#destroy'
   get '/password', to: 'volunteers#password'
   
+  resources :queries
   get '/queryone', to: 'queries#one'
+  get '/querytwo', to: 'queries#two'
+  get '/querythree', to: 'queries#three'
+  get '/queryfour', to: 'queries#four'
+  get '/queryfive', to: 'queries#five'
+  get '/querysix', to: 'queries#six'
+  get '/queryseven', to: 'queries#seven'
+  get '/queryeight', to: 'queries#eight'
+  get '/querynine', to: 'queries#nine'
+  get '/queryten', to: 'queries#ten'
+  
+  
   get '/request', to: 'projects#project'
-  get '/assign', to: 'projects#assign'
+  #get '/assign', to: 'projects#assign'
   
   resources :volunteers
   resources :tools
@@ -18,6 +30,9 @@ Rails.application.routes.draw do
   resources :streets
   resources :parks 
   resources :washes
+  resources :reports
+  resources :shorttermevents
+  resources :evaluationreports
 
   resources :ceremonies do
     resources :ceremonyawards
@@ -30,7 +45,7 @@ Rails.application.routes.draw do
   end
   resources :projects do
     resources :ceremonies
-    resources :sites
+    resources :assigns
   end
   get '/join-Organization', to: 'organizations#join'
   # You can have the root of your site routed with "root"
