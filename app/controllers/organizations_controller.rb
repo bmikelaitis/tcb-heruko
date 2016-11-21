@@ -53,6 +53,7 @@ class OrganizationsController < ApplicationController
 
 	def show
 		@organization = Organization.find(params[:id])
+		
 		#@receipts = @user.receipts.order("updated_at DESC")
 
 	end

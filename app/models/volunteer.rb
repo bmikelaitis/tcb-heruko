@@ -1,5 +1,6 @@
 class Volunteer < ActiveRecord::Base 
     has_many :managementinfos
+    has_many :evaluationreports
     has_and_belongs_to_many :organizations, through: :managementinfo
     #before_save { self.emailSignIn = emailSignIn.downcase }
     validates :firstName, presence: true, length: { minimum: 2, maximum: 15 }

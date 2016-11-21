@@ -1,34 +1,36 @@
-<div class="table-container">
-	<table class="data-table">
-		<thead>
-			<tr>
-				<th>Ceremony Name</th>
-				<th>Location Preference</th>
-				<th>Agreement Signed</th>
-				<th>Date</th>
-			</tr>
-		</thead>
-<tbody>
-			<tr>
-				<td><%= @ceremony.ceremonyName %></td>
-				<td><%= @ceremony.locationPreference %></td>
-				<td><%= @ceremony.agreementSigned %></td>
-				<td><%= @ceremony.date %></td>
-			
-                <td><%= link_to ceremonies_path(@ceremony) do %>
-                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
-                    <% end %>            
-              		  </td>
-			</tr>		
-</tbody>
-</table>
+<%= render 'shared/page_title', title: "Ceremony Information" %>
+<div>
+<div class="row">
+
+    <div class="col-lg-4 col-xs-4 col-lg-offset-2">
+        <p>
+            <h3>Ceremony Name: <%= @ceremony.ceremonyName %></h3>
+			<h4>Location Preference: <%= @ceremony.locationPreference %></h4>
+			<h4>Agreement Signed: <%= @ceremony.agreementSigned %></h4>
+			<h4>Date: <%= @ceremony.date.try(:strftime, "%m/%d/%Y") %></h4>
+			<%= link_to "Edit Ceremony", edit_ceremony_path(@ceremony), class:"btn btn-default btn-primary" %>
+        </p>
+    </div>
+    <div class="col-lg-3 col-xs-3 col-lg-offset-2">
+        <% if current_user.try(:admin?)  %>
+    	    <%= form_for @ceremony do |f| %>
+                <h5>Agreement Signed <%= f.check_box :agreementSigned %></h5>
+                <%= f.submit(@ceremony.new_record? ? "Register" : "Set Privileges", class: "btn btn-success") %>
+		    <% end %>
+        <% else %>
+        <% end %>
+        <%= render 'addnotes' %>
+		<%= render 'addsigns' %>
+		<%= render 'addawards' %>
+    </div> 
+</div>
 </div>
 
-
-		
+<div class="col-lg-12">
+<%= render 'shared/page_title', title: "Ceremony Awards" %>
 
 <div class="table-container">
-	<table class="data-table">
+	<table class="data-table ">
 		<thead>
 			<tr>
 				<th>Ceremony Award Title</th>
@@ -42,7 +44,7 @@
 </table>
 </div>
 
-
+<%= render 'shared/page_title', title: "Ceremony Notes" %>
 <div class="table-container">
 	<table class="data-table">
 		<thead>
@@ -57,6 +59,7 @@
 </table>
 </div>
 
+<%= render 'shared/page_title', title: "Ceremony Signs" %>
 <div class="table-container">
 	<table class="data-table">
 		<thead>
@@ -74,6 +77,6 @@
 </div>
 
 
-<%= render 'addnotes' %>
-<%= render 'addsigns' %>
-<%= render 'addawards' %>
+</div>
+
+

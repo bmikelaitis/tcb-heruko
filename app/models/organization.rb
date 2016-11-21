@@ -1,6 +1,9 @@
 class Organization < ActiveRecord::Base 
     has_many :managementinfos
     has_many :projects
+    has_many :toolchecks
+    has_many :shorttermevents
+    has_many :evaluationreports
     has_many :volunteers, through: :managementinfo
     #before_save { self.emailSignIn = emailSignIn.downcase }
     validates :organizationName, presence: true, length: { minimum: 2, maximum: 50 }

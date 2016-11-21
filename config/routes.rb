@@ -22,17 +22,28 @@ Rails.application.routes.draw do
   
   
   get '/request', to: 'projects#project'
+  get '/requestevent', to: 'shorttermevents#event'
   #get '/assign', to: 'projects#assign'
   
-  resources :volunteers
   resources :tools
   resources :sites
   resources :streets
   resources :parks 
   resources :washes
-  resources :reports
-  resources :shorttermevents
   resources :evaluationreports
+  resources :reports
+  resources :toolchecks
+  
+  resources :shorttermevents do 
+    resources :essigns
+  end
+  
+  resources :volunteers do
+    resources :organizations
+    resources :groupcoordinators
+    resources :regulatmembers
+    resources :projects
+  end
 
   resources :ceremonies do
     resources :ceremonyawards
@@ -42,10 +53,14 @@ Rails.application.routes.draw do
   
   resources :organizations do
     resources :projects
+    resources :evaluationreports
+    resources :toolchecks
+    resources :shorttermevents
   end
   resources :projects do
     resources :ceremonies
     resources :assigns
+    resources :reports
   end
   get '/join-Organization', to: 'organizations#join'
   # You can have the root of your site routed with "root"

@@ -1,0 +1,27 @@
+<%= render 'shared/page_title', title: "Project Progress Reports" %>
+<%= form_tag(reports_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Report Info" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+
+<% if @reports.present? %>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+			    <th>Organization Name</th>
+				<th>Project Name</th>
+				<th>Work Done</th>
+				<th>Number of Volunteers</th>
+				<th>Total Hours Worked</th>
+				<th>Date Last Worked</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+  <%= render @reports %>
+  	</table>
+</div>
+<% else %>
+  <p>There are no report containing the name <%= params[:search] %>.</p>
+<% end %>

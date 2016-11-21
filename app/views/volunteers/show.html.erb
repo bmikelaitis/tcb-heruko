@@ -1,60 +1,65 @@
-<div class="table-container">
-	<table class="data-table">
-		<thead>
-			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Email</th>
-				<th>Job Title</th>
-				<th>Admin Status</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><%= @volunteer.firstName %></td>
-				<td><%= @volunteer.lastName %></td>
-				<td><%= @volunteer.emailSignIn %></td>
-				<td><%= @volunteer.title %></td>
-				<td><% if @volunteer.admin == true %>
-                        <div class="glyphicon glyphicon-ok"></div>
+<div class="col-lg-offset-1">
+<div class="boarder ">
+<div class="col-lg-12 col-xs-12 ">
+                <h3>User Information</h3> <hr style="height:1px;border:none;color:#333;background-color:#333;">
+				<h4>First Name: <%= @volunteer.firstName %></h4>
+				<h4>Last Name: <%= @volunteer.lastName %></h4>
+				<h4>Email: <%= @volunteer.emailSignIn %></h4>
+				<h4>Job Title: <%= @volunteer.title %></h4>
+				<% if @volunteer.admin == true %>
+				<h4>Admin: <div class="glyphicon glyphicon-ok"></div></h4>
+                        
                     <% else %>
-                        <div class="glyphicon glyphicon-remove" style="color:red"></div>
-                    <% end %></td>
-			
-                <td><%= link_to @volunteer_path do %>
-                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
-                    <% end %>            
-              		  <%= link_to edit_volunteer_path do %>
-                        <i class="glyphicon glyphicon-cog" style="color:grey"></i>
-                    <% end %></td> </td>
-			</tr>		
-</tbody>
-
-<div>
-
-<% if same_admin_user(@volunteer) %>
-<h2>Admin Dashboard</h2>
-	<li><%= link_to "System Users", volunteers_path %></li>
-    <li><%= link_to "Organization Overview", organizations_path %></li>
-    <li><%= link_to "Tool Overview", tools_path %></li>
-    <li><%= link_to "Sites Overview", sites_path %></li>
-    <li><%= link_to "Ceremonies Overview", ceremonies_path %></li>
-    <li><%= link_to "Projects without a Site", request_path %></li>
-    <li><%= link_to "Project Reports Overview", reports_path %></li>
-    <li><%= link_to "Short-Term Events Overview", projects_path %></li>
-    <li><%= link_to "Evaluation Report Overview", projects_path %></li>
-    <li><%= link_to "Generate TCB Reports", queries_path %></li>
-
-<% end %>
-</div>
-
-<div class="col-lg-3 col-xs-3">
+                        <h4> Admin:<div class="glyphicon glyphicon-remove" style="color:red"></div></h4>
+                    <% end %>
+				<h4><%= link_to "Edit Volunteer", edit_volunteer_path(@volunteer), class:"btn btn-default btn-primary" %></h4>
+		         
+</br>
+</br>
         <% if current_user.try(:admin?)  %>
     	    <%= form_for @volunteer do |f| %>
+    	    <h4> Set User as Admin</h4>
                 <h5>Admin User? <%= f.check_box :admin %></h5>
                 <%= f.submit(@volunteer.new_record? ? "Register" : "Set Privileges", class: "btn btn-success") %>
 		    <% end %>
         <% else %>
         <% end %>
-</div> 
+ 
+</div>
+</div>
+</div>
+<% if same_admin_user(@volunteer) %>
+<div class="col-lg-4 col-xs-4 col-lg-offset-2">
+<div class="boarder-dash ">
+<div class="col-lg-11 col-xs-12 col-lg-offset-1">
+    
+
+
+<h2>Admin Dashboard</h2>
+<hr style="height:1px;border:none;color:#333;background-color:#333;">
+    <h4>System Users</h4>
+	<li><%= link_to "System Users", volunteers_path %></li>
+	<h4>Organizations</h4>
+    <li><%= link_to "Organization Overview", organizations_path %></li>
+    <li><%= link_to "Evaluation Report Overview", evaluationreports_path %></li>
+    <h4>Sites</h4>
+    <li><%= link_to "Sites Overview", sites_path %></li>
+    <h4>Projects</h4>
+    <li><%= link_to "Projects Overview", projects_path %></li>
+    <li><%= link_to "Projects without a Site", request_path %></li>
+    <li><%= link_to "Project Reports Overview", reports_path %></li>
+    <li><%= link_to "Ceremonies Overview", ceremonies_path %></li>
+    <h4>Short-Term Events</h4>
+    <li><%= link_to "Short-Term Events without a Site", requestevent_path %></li>
+    <li><%= link_to "Short-Term Events Overview", shorttermevents_path %></li>
+    <h4>Tools</h4>
+    <li><%= link_to "Tool Overview", tools_path %></li>
+    <li><%= link_to "Tool Checkout Overview", toolchecks_path %></li>
+    <h4>Tucson Clean and Beautiful Query Reports</h4>
+    <li><%= link_to "Generate TCB Reports", queries_path %></li>
+
+<% end %>
+</div>
+</div>
+</div>
+

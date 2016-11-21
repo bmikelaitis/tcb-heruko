@@ -1,11 +1,18 @@
 <tbody>
 			<tr>
-				<td><%= street.id %></td>
+				<td><%= street.site.siteStreet %></td>
+				<td><%= street.site.siteCrossStreets %></td>
+				<td><%= street.site.siteCounty %></td>
+				<td><%= street.site.siteZip %></td>
+				<td><%= street.site.cityWardNumber %></td>
+				<td><%= street.site.countyDistrict %></td>
 				<td><%= street.start %></td>
 				<td><%= street.end %></td>
 				<td><%= street.direction %></td>
 				<td><%= street.miles %></td>
-				
+				<td><%= link_to site_path(street) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>    </td> 
+			
 			</tr>		
 </tbody>
-	

@@ -1,0 +1,19 @@
+<tbody>
+			<tr>
+			    <td><%= report.project.organization.organizationName %></td>
+				<td><%= report.project.projectName %></td>
+				<td><%= report.workDone %></td>
+				<td><%= report.numVolunteers %></td>
+				<td><%= report.totalHours %></td>
+				<td><%= report.dateLastWork.try(:strftime, "%m/%d/%Y") %></td>
+			
+                <td><%= link_to report_path(report) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>            
+              		  <%= link_to edit_report_path(report) do %>
+                        <i class="glyphicon glyphicon-cog" style="color:grey"></i>
+                        <% end %>
+	            	</td>
+			</tr>		
+</tbody>
+	

@@ -3,7 +3,7 @@ class CreateSites < ActiveRecord::Migration
     create_table :sites do |t|
       t.string :subtype
       t.string :siteStreet, :siteCrossStreets, :siteCounty, :siteZip
-      t.string :status
+      t.boolean :status, default: false
       t.string :cityWardNumber, :countyDistrict
       t.boolean :permitRequired, :permitInPlace
       t.timestamps

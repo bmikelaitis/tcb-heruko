@@ -1,8 +1,16 @@
 <tbody>
 			<tr>
-				<td><%= park.id %></td>
+				<td><%= park.site.siteStreet %></td>
+				<td><%= park.site.siteCrossStreets %></td>
+				<td><%= park.site.siteCounty %></td>
+				<td><%= park.site.siteZip %></td>
+				<td><%= park.site.cityWardNumber %></td>
+				<td><%= park.site.countyDistrict %></td>
 				<td><%= park.parkType %></td>
 				<td><%= park.acres %></td>
+				<td><%= link_to site_path(park) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>    </td> 
 			</tr>		
 </tbody>
 	

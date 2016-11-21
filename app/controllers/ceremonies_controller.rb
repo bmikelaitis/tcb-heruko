@@ -1,12 +1,14 @@
 class CeremoniesController < ApplicationController 
     def index
-		@ceremonies = Ceremony.all
+    	@var = 1
+		@ceremonies = Ceremony.select("*").joins(:project)
+
 		if params[:search]
     		@ceremonies = Ceremony.search(params[:search]).order("created_at DESC")
 		else
     		@ceremonies = Ceremony.all.order('created_at DESC')
 		end
-	end
+    end
 
 	def new
 		@project = Project.find( params[:project_id])
@@ -38,6 +40,7 @@ class CeremoniesController < ApplicationController
 	end
 
 	def show
+		@var = 0
 		@ceremony = Ceremony.find(params[:id])
 		
 

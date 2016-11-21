@@ -3,12 +3,12 @@
 		<thead>
 			<tr>
 				<th>Organization Name</th>
-				<th>Stree Address</th>
+				<th>Street Address</th>
 				<th>City</th>
 				<th>State</th>
 				<th>Zip Code</th>
 				<th>Phone Number</th>
-				<th>Actions</th>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -25,45 +25,59 @@
 			</tr>		
 </tbody>
 </table>
-
-<div class="row">
-	<div class="col-md-8">
-		<%= render 'shared/page_title', title: "Request a Project" %>
-		
-		
-			  <%= form_for([@organization, Project.new]) do |f| %>
-			
-			    <div class="field">
-			      <h5>Project Name:</h5>
-			      <%= f.hidden_field :organization_id, :value => @organization.id %>
-			      <%= f.text_field :projectName %>
-			      <h5>Requested Start Date:</h5>
-			      <%= f.text_field :startDate, :id => "datepicker", :value => Date.today %>
-			      
-			    </div>
-			  
-				<%= f.submit "Request Project", class: "btn btn-success" %>
-				<% end %>
-				
-
-			
-	</div>
 </div>
+
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Tool Name</th>
+				<th>Type</th>
+				<th>Status</th>
+				<th>Quantity</th>
+				<th>Approved</th>
+				<th>Date Processed</th>
+				<th>Actions</th>
+
+			</tr>
+		</thead>
+    <%= render(partial: 'toolchecks/toolcheck', collection: @organization.toolchecks) %>
+  	</table>
+</div>
+
+<li><%= link_to "Submit a tool request", new_organization_toolcheck_path(@organization) %></li>
+
+
 <div class="table-container">
 	<table class="data-table">
 		<thead>
 			<tr>
 				<th>Project Name</th>
 				<th>Go To Project</th>
+				<th>Go To Project</th>
+				<th>Go To Project</th>
+				<th>Project Name</th>
+				<th>Go To Project</th>
+				<th>Go To Project</th>
+				
+				
 
 			</tr>
 		</thead>
     <%= render(partial: 'projects/project', collection: @organization.projects) %>
   	</table>
 </div>
+<div class="col-lg-3 col-xs-3 col-lg-offset-2">
+<%= render 'newevent' %> 
+</br>
+<%= render 'newproject' %>
+</br>
+<%= render 'neweval' %>
+</div>
 
 
 
-<script>
-$('#datepicker').datepicker({format: 'yyyy-mm-dd'});
-</script>
+
+
+
+

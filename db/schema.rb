@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103074056) do
+ActiveRecord::Schema.define(version: 20161119053023) do
 
   create_table "ceremonies", force: :cascade do |t|
     t.integer  "project_id",         limit: 4
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20161103074056) do
     t.datetime "updated_at"
   end
 
-  create_table "evaluation_reports", force: :cascade do |t|
-    t.integer  "volunteer_id",     limit: 4
+  create_table "evaluationreports", force: :cascade do |t|
+    t.integer  "admin_id",         limit: 4
     t.integer  "organization_id",  limit: 4
     t.integer  "cleanUpsDone",     limit: 4
     t.integer  "cleanUpsRequired", limit: 4
@@ -61,11 +61,12 @@ ActiveRecord::Schema.define(version: 20161103074056) do
     t.datetime "updated_at"
   end
 
-  create_table "group_coordinators", force: :cascade do |t|
-    t.string   "address",    limit: 255
-    t.string   "city",       limit: 255
-    t.string   "state",      limit: 255
-    t.string   "zipcode",    limit: 255
+  create_table "groupcoordinators", force: :cascade do |t|
+    t.integer  "volunteer_id", limit: 4
+    t.string   "address",      limit: 255
+    t.string   "city",         limit: 255
+    t.string   "state",        limit: 255
+    t.string   "zipcode",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -102,9 +103,6 @@ ActiveRecord::Schema.define(version: 20161103074056) do
     t.datetime "updated_at"
   end
 
-  create_table "project_volunteers", force: :cascade do |t|
-  end
-
   create_table "projects", force: :cascade do |t|
     t.integer  "organization_id",    limit: 4
     t.integer  "site_id",            limit: 4
@@ -117,8 +115,14 @@ ActiveRecord::Schema.define(version: 20161103074056) do
     t.datetime "updated_at"
   end
 
-  create_table "regular_members", force: :cascade do |t|
-    t.decimal "reportedHours", precision: 6, scale: 2
+  create_table "projectvolunteers", force: :cascade do |t|
+    t.integer "volunteer_id", limit: 4
+    t.integer "project_id",   limit: 4
+  end
+
+  create_table "regularmembers", force: :cascade do |t|
+    t.integer "volunteer_id",  limit: 4
+    t.decimal "reportedHours",           precision: 6, scale: 2
   end
 
   create_table "reports", force: :cascade do |t|
@@ -131,10 +135,10 @@ ActiveRecord::Schema.define(version: 20161103074056) do
     t.datetime "updated_at"
   end
 
-  create_table "short_term_events", force: :cascade do |t|
+  create_table "shorttermevents", force: :cascade do |t|
     t.integer  "organization_id", limit: 4
     t.integer  "site_id",         limit: 4
-    t.string   "type",            limit: 255
+    t.string   "eventtype",       limit: 255
     t.string   "timeFrame",       limit: 255
     t.datetime "startDate"
     t.datetime "endDate"
@@ -165,7 +169,7 @@ ActiveRecord::Schema.define(version: 20161103074056) do
     t.string   "siteCrossStreets", limit: 255
     t.string   "siteCounty",       limit: 255
     t.string   "siteZip",          limit: 255
-    t.string   "status",           limit: 255
+    t.boolean  "status",                       default: false
     t.string   "cityWardNumber",   limit: 255
     t.string   "countyDistrict",   limit: 255
     t.boolean  "permitRequired"
@@ -183,14 +187,14 @@ ActiveRecord::Schema.define(version: 20161103074056) do
     t.datetime "updated_at"
   end
 
-  create_table "tool_checkouts", force: :cascade do |t|
+  create_table "toolchecks", force: :cascade do |t|
     t.integer  "organization_id", limit: 4
     t.integer  "tool_id",         limit: 4
-    t.integer  "volunteer_id",    limit: 4
+    t.integer  "admin_id",        limit: 4
     t.string   "Type",            limit: 255
     t.string   "Status",          limit: 255
     t.integer  "quantityRented",  limit: 4
-    t.boolean  "approved"
+    t.boolean  "approved",                    default: false
     t.datetime "dateCheckedOut"
     t.datetime "created_at"
     t.datetime "updated_at"

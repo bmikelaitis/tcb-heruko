@@ -31,8 +31,9 @@ class ParksController < ApplicationController
 
 	def update
 		@park = Park.find(params[:id])
-		if @street.update(street_params)
-			flash[:success] = "The street has been updated succesfully"
+		if @park.update(park_params)
+			flash[:success] = "The park has been updated succesfully"
+			redirect_to site_path(param_1: @park.site_id)
 			#redirect_to receipts_path(@user) #TODO change to users_path
 		else
 			render 'edit'

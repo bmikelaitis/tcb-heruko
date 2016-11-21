@@ -1,3 +1,4 @@
+<%= render 'shared/page_title', title: "All Ceremonies" %>
 <%= form_tag(ceremonies_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search Ceremony Name" %>
 <%= submit_tag "Search" %>
@@ -9,10 +10,13 @@
 	<table class="data-table">
 		<thead>
 			<tr>
+				<th>Organization Name</th>
+				<th>Project Name</th>
 				<th>Ceremony Name</th>
 				<th>Location Preference</th>
 				<th>Agreement Signed</th>
 				<th>Date</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
   <%= render @ceremonies %>

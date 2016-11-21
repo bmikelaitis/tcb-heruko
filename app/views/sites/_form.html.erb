@@ -16,8 +16,11 @@
 		<%= f.text_field :cityWardNumber %>
 		<h5>County District:</h5>
 		<%= f.text_field :countyDistrict %>
-
-	
+		<h5>Permit Required:</h5>
+		<%= f.check_box :permitRequired %>
+		<h5>Is Permit In Place:</h5>
+		<%= f.check_box :permitInPlace %>
+	<br><br>
 		<%= f.submit(@site.new_record? ? "Register Site" : "Edit Site") %>
 		<% end %>
 	</div>

@@ -1,0 +1,126 @@
+<%= render 'shared/page_title', title: "Site Information" %>
+<div class="col-lg-offset-1">
+<div class="boarder ">
+<div class="col-lg-12 col-xs-12 ">
+                <h3>Site Information</h3> <hr style="height:1px;border:none;color:#333;background-color:#333;">
+				<h4>Site street: <%= @site.siteStreet %></h4>
+				<h4>Site Cross Streets: <%= @site.siteCrossStreets %></h4>
+				<h4>Site Zipcode: <%= @site.siteZip %></h4>
+				<% if @site.status == true %>
+				<h4>Taken Status: <div class="glyphicon glyphicon-ok"></div></h4>
+                        
+                    <% else %>
+                        <h4>Taken Status:<div class="glyphicon glyphicon-remove" style="color:red"></div></h4>
+                    <% end %>
+                <h4>City Ward Number: <%= @site.cityWardNumber %></h4>
+                <h4>County District: <%= @site.countyDistrict %></h4>
+                <% if @site.permitRequired == true %>
+				<h4>Permit Required: <div class="glyphicon glyphicon-ok"></div></h4>
+                        
+                    <% else %>
+                        <h4>Permit Required:<div class="glyphicon glyphicon-remove" style="color:red"></div></h4>
+                    <% end %>
+                <% if @site.permitInPlace == true %>
+				<h4>Permit In Place: <div class="glyphicon glyphicon-ok"></div></h4>
+                        
+                    <% else %>
+                        <h4>Permit In Place:<div class="glyphicon glyphicon-remove" style="color:red"></div></h4>
+                    <% end %>
+                    
+				<h4><%= link_to "Edit Site", edit_site_path(@site), class:"btn btn-default btn-primary" %></h4>
+</div>
+</div>
+</div>
+<% if @site.subtype == 'Park' %>
+<div class="col-lg-4 col-xs-4 col-lg-offset-2">
+<div class="boarder-park ">
+<div class="col-lg-11 col-xs-12 col-lg-offset-1">
+    
+
+
+<h2>Park Information</h2>
+<hr style="height:1px;border:none;color:#333;background-color:#333;">
+    <h4>Park Type: <%= @site.park.parkType %></h4>
+	<h4>Park Acres: <%= @site.park.acres %></h4>
+
+</div>
+</div>
+</div>
+<% end %>
+
+
+<% if @site.subtype == 'Street' %>
+<div class="col-lg-4 col-xs-4 col-lg-offset-2">
+<div class="boarder-street ">
+<div class="col-lg-11 col-xs-12 col-lg-offset-1">
+
+<h2>Street Information</h2>
+<hr style="height:1px;border:none;color:#333;background-color:#333;">
+    <h4>Street Start: <%= @site.street.start %></h4>
+	<h4>Street End: <%= @site.street.end %></h4>
+	<h4>Street Direction: <%= @site.street.direction %></h4>
+	<h4>Street Miles: <%= @site.street.miles %></h4>
+
+</div>
+</div>
+</div>
+<% end %>
+
+
+
+<% if @site.subtype == 'Wash' %>
+<div class="col-lg-4 col-xs-4 col-lg-offset-2">
+<div class="boarder-park ">
+<div class="col-lg-11 col-xs-12 col-lg-offset-1">
+
+<h2>Wash Information</h2>
+<hr style="height:1px;border:none;color:#333;background-color:#333;">
+    <h4>Water Flow: <%= @site.wash.waterFlow %></h4>
+	<h4>Wash Miles: <%= @site.wash.Miles %></h4>
+
+</div>
+</div>
+</div>
+<% end %>
+
+<br>
+<div class="col-lg-12">
+<%= render 'shared/page_title', title: "Projects Assigned to Site"%> 
+</div>
+<div class="table-container">
+    
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Project Name</th>
+				<th>Organization Name</th>
+				<th>Project Location</th>
+				<th>Yearly Participants</th>
+				<th>If Canceled</th>
+				<th>Start Date</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		
+        <% @projects.each do |project| %>
+        <tbody>
+			<tr>
+                <td><%= project.projectName %> </td>
+                <td><%= project.organization.organizationName %> </td>
+                <td><%= project.site.siteStreet %> </td>
+                <td><%= project.yearlyParticipants %> </td>
+                <td><% if project.ifCanceled == true %>
+                        <div class="glyphicon glyphicon-ok"></div>
+                    <% else %>
+                        <div class="glyphicon glyphicon-remove" style="color:red"></div>
+                    <% end %></td>
+                <td><%= project.startDate.try(:strftime, "%m/%d/%Y")%> </td>
+                <td><%= link_to project_path(project) do %>
+                <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+<% end %>        
+</tr>		
+		
+        <% end %>
+</tbody>
+        </table>
+    

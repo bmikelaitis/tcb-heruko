@@ -1,0 +1,22 @@
+<%= render 'shared/errors', obj: @report %>
+<div>
+	<div>
+		<%= form_for @report do |f| %>
+		<%= f.hidden_field :project_id, :value => @project.id %>
+		<h5>Work Done:</h5>
+		<%= f.text_field :workDone %>
+		<h5>Number of Volunteers:</h5>
+		<%= f.text_field :numVolunteers %>
+		<h5>Total Hours Worked:</h5>
+		<%= f.text_field :totalHours %>
+		<h5>Date Last Worked:</h5>
+		<%= f.text_field :dateLastWork, :id => "datepicker", :value => Date.today %>
+	
+		<%= f.submit(@report.new_record? ? "Create Report" : "Edit Report") %>
+		<% end %>
+	</div>
+</div>
+
+<script>
+$('#datepicker').datepicker({format: 'yyyy-mm-dd'});
+</script>

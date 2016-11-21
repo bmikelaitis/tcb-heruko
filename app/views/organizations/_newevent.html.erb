@@ -1,0 +1,47 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3" data-whatever="@mdo">Request New Event</button>
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel3">Request New A Short Term Event</h4>
+      </div>
+      	<%= form_for([@organization, Shorttermevent.new]) do |f| %>
+			
+			    <div class="field">
+			<%= f.hidden_field :organization_id, :value => @organization.id %>
+
+      <div class="modal-body">
+          <div class="form-group">
+            <h5>Event Type:</h5>
+		    <%= f.text_field :eventtype %>
+            <h5>Time Frame:</h5>
+		    <%= f.text_field :timeFrame %>
+          </div>
+          <div class="form-group">
+            <h5>Requested Start Date:</h5>
+			<%= f.text_field :startDate, :id => "datepicker", :value => Date.today %>
+			<h5>Requested End Date:</h5>
+			<%= f.text_field :endDate, :id => "datepicker1", :value => Date.today %>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= f.submit "Request Project", class: "btn btn-success" %>
+		<% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+</script>
+<script>
+$('#datepicker').datepicker({format: 'yyyy-mm-dd'});
+$('#datepicker1').datepicker({format: 'yyyy-mm-dd'});
+</script>

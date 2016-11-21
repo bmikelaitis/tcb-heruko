@@ -3,5 +3,5 @@
 	<td><%=sign.milesNeeded%></td>
 	<td><%=sign.signPlacement%></td>
 	<td><%=sign.signLocation%></td>
-    <td> <%= time_ago_in_words(sign.signPlacement)%> ago</td>
+    <td> <%= time_ago_in_words(sign.created_at)%> ago</td>
 </tr>		

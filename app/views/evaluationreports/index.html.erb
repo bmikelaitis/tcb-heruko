@@ -1,0 +1,27 @@
+<%= render 'shared/page_title', title: "All Evaluation Reports" %>
+<%= form_tag(evaluationreports_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Evaluation Reports" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @evaluationreports.present? %>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Admin Name</th>
+				<th>Organization Name</th>
+				<th>Clean Ups Done</th>
+				<th>Clean Ups Required</th>
+				<th>Evaluation Start Date</th>
+				<th>Evaluation End Date</th>
+				<th>Created At</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+  <%= render @evaluationreports %>
+  	</table>
+</div>
+<% else %>
+  <p>There are no Evaluation Reports containing the name <%= params[:search] %>.</p>
+<% end %>

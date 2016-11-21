@@ -1,0 +1,16 @@
+<tr>
+<td><%= shorttermevent.organization.organizationName %> </td>
+
+<% if @var == 3%>
+	<td><%= shorttermevent.site.subtype %> </td>
+    <td><%= shorttermevent.site.siteStreet %> </td>
+<% end %>
+
+<td><%= shorttermevent.eventtype %> </td>
+<td><%= shorttermevent.timeFrame %> </td>
+<td><%= shorttermevent.startDate.try(:strftime, "%m/%d/%Y") %> </td>
+<td><%= shorttermevent.endDate.try(:strftime, "%m/%d/%Y") %> </td>
+<td><%= link_to shorttermevent_path(shorttermevent) do %>
+                <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+<% end %>        
+</tr>

@@ -1,0 +1,48 @@
+<%= render 'shared/page_title', title: "Tool Checkout Information" %>
+<div>
+<div class="row">
+
+    <div class="col-lg-4 col-xs-4 col-lg-offset-2">
+        <p>
+            <h4>Organization Name: <%= @toolcheck.organization.organizationName %></h4>
+            <h4>Tool Name: <%= @toolcheck.tool.toolName %></h4>
+			<h4>Tool Type: <% if @toolcheck.Type == '1' %>
+				<td>Checked Out</td>
+				<% elsif @toolcheck.Type == '2' %>
+				<td>Returned</td>
+				<% else %>
+				<td>Other</td>
+				<% end %>
+				</h4>
+			<h4>Tool Status: <% if @toolcheck.Status == NIL %>
+				<td>None</td>
+				<% else %>
+				<td><%= @toolcheck.Status %></td>
+				<% end %></h4>
+			<h4>Quantity Rented: <%= @toolcheck.quantityRented %></h4>
+			<h4>Checkout Status: <% if @toolcheck.approved == NIL %>
+				<td>No</td>
+				<% else %>
+				<td>Yes</td>
+				<% end %></h4>
+			<h4>Date: <%= @toolcheck.dateCheckedOut.try(:strftime, "%m/%d/%Y") %></h4>
+			<%= link_to "Edit Tool Checkout", edit_toolcheck_path(@toolcheck), class:"btn btn-default btn-primary" %>
+        </p>
+    </div>
+<div class="col-lg-3 col-xs-3 right">
+        <% if current_user.try(:admin?)  %>
+    	    <%= form_for @toolcheck do |f| %>
+    	    <%= f.hidden_field :admin_id, :value => @user %>
+                <h5>Approve <%= f.check_box :approved %></h5>
+                <%= f.submit(@toolcheck.new_record? ? "Register" : "Set Privileges", class: "btn btn-success") %>
+		    <% end %>
+		    </br>
+		    <%= render 'setstatus' %>
+        <% else %>
+        <% end %>
+</div> 
+
+</div>
+</div>
+
+

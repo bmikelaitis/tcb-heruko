@@ -1,0 +1,36 @@
+<%= render 'shared/page_title', title: "All Sites" %>
+<ul class="nav nav-tabs">
+    <li class="active">
+		<%= link_to "All Sites", sites_path %>
+	</li>
+
+</ul>
+
+<%= form_tag(new_shorttermevent_essign_path(@shorttermevent), :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Sites" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @sites.present? %>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Subtype</th>
+				<th>Site Street</th>
+				<th>Cross-Streets</th>
+				<th>County</th>
+				<th>Zip Code</th>
+				<th>City Ward Number</th>
+				<th>County District</th>
+				<th>Status</th>
+				<th>Assign Site</th>
+
+			</tr>
+		</thead>
+  <%= render @sites %>
+  	</table>
+</div>
+<% else %>
+  <p>There are no Sites containing the information <%= params[:search] %> exist.</p>
+<% end %>

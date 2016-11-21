@@ -3,6 +3,12 @@
 				<td><%= tool.toolName %></td>
 				<td><%= tool.totalQuantity %></td>
 				<td><%= tool.description %></td>
+				<td><%= link_to tool_path(tool) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>            
+              		  <%= link_to edit_tool_path(tool) do %>
+                        <i class="glyphicon glyphicon-cog" style="color:grey"></i>
+                    <% end %></td>
 			</tr>		
 </tbody>
 	

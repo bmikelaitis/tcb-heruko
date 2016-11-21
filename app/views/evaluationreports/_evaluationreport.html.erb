@@ -1,0 +1,12 @@
+<tr>
+<td><%= evaluationreport.volunteer.firstName %> </td>
+<td><%= evaluationreport.organization.organizationName %> </td>
+<td><%= evaluationreport.cleanUpsDone %> </td>
+<td><%= evaluationreport.cleanUpsRequired %> </td>
+<td><%= evaluationreport.evalPeriodStart.try(:strftime, "%m/%d/%Y")%> </td>
+<td><%= evaluationreport.evalPeriodEnd.try(:strftime, "%m/%d/%Y")%> </td>
+<td><%= evaluationreport.created_at.try(:strftime, "%m/%d/%Y")%> </td>
+<td><%= link_to evaluationreport_path(evaluationreport) do %>
+                <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+<% end %>        
+</tr>

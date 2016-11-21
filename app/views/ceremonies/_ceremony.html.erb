@@ -1,9 +1,17 @@
 <tbody>
 			<tr>
+			    <% if @var == 1%>
+			    <td><%= ceremony.project.organization.organizationName %></td>
+			    <td><%= ceremony.project.projectName %></td>
+			    <% end %>
 				<td><%= ceremony.ceremonyName %></td>
 				<td><%= ceremony.locationPreference %></td>
-				<td><%= ceremony.agreementSigned %></td>
-				<td><%= ceremony.date %></td>
+				<td><% if ceremony.agreementSigned == true %>
+                        <div class="glyphicon glyphicon-ok"></div>
+                    <% else %>
+                        <div class="glyphicon glyphicon-remove" style="color:red"></div>
+                    <% end %></td>
+				<td><%= ceremony.date.try(:strftime, "%m/%d/%Y") %></td>
 			
                 <td><%= link_to ceremony_path(ceremony) do %>
                         <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
@@ -13,5 +21,3 @@
                     <% end %></td> </td>
 			</tr>		
 </tbody>
-	
-	

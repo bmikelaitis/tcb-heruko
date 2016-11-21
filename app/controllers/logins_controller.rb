@@ -7,7 +7,7 @@ class LoginsController < ApplicationController
 		volunteer = Volunteer.find_by(emailSignIn: params[:emailSignIn])
 		if volunteer && volunteer.authenticate(params[:password])
 			flash[:success] = "You are Logged In!"
-			redirect_to volunteers_path
+			redirect_to volunteer_path(volunteer)
 			session[:volunteer_id] = volunteer.id
 		else
 			flash.now[:danger] = "Your email address or password does not match.  For Password Help, Please Contact a System Administration."

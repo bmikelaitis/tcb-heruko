@@ -1,9 +1,16 @@
 <tbody>
 			<tr>
-				<td><%= wash.id %></td>
+				<td><%= wash.site.siteStreet %></td>
+				<td><%= wash.site.siteCrossStreets %></td>
+				<td><%= wash.site.siteCounty %></td>
+				<td><%= wash.site.siteZip %></td>
+				<td><%= wash.site.cityWardNumber %></td>
+				<td><%= wash.site.countyDistrict %></td>
 				<td><%= wash.waterFlow %></td>
 				<td><%= wash.Miles %></td>
-
+				<td><%= link_to site_path(wash) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                <% end %>    </td> 
 			</tr>		
 </tbody>
 	

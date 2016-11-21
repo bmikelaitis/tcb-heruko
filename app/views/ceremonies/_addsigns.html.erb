@@ -12,22 +12,15 @@
 
       <div class="modal-body">
           <div class="form-group">
-            <h5>Miles Needed:</h5>
+        <h5>Miles Needed:</h5>
 		    <%= f.text_field :milesNeeded %>
-          </div>
-      </div>
-      <div class="modal-body">
-          <div class="form-group">
-            <h5>Sign Placement:</h5>
+		    <h5>Sign Placement:</h5>
 		    <%= f.text_field :signPlacement %>
-          </div>
-      </div>
-      <div class="modal-body">
-          <div class="form-group">
-            <h5>Sign Location:</h5>
+		    <h5>Sign Location:</h5>
 		    <%= f.text_field :signLocation %>
           </div>
       </div>
+      
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <%= f.submit(Sign.new ? "Create" : "Edit Sign", class: "btn btn-default")%>

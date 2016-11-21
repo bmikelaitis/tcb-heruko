@@ -1,0 +1,22 @@
+<%= render 'shared/errors', obj: @toolcheck %>
+<div>
+	<div>
+		<%= form_for @toolcheck do |f| %>
+		<%= f.hidden_field :organization_id, :value => @organization.id %>
+		<h5>Select Tool for Request:</h5>
+		<%= f.select :tool_id, options_from_collection_for_select(Tool.all, :id, :toolName)%>
+		<h5>Transaction Request:</h5>
+		<%=f.select :Type, [['Checkout', 1], ['Return', 2], ['Other', 3]] %>
+		<h5>Quantity:</h5>
+		<%= f.text_field :quantityRented %>
+		<h5>Date Requested for Transaction:</h5>
+		<%= f.text_field :dateCheckedOut, :id => "datepicker", :value => Date.today %>
+	
+		<%= f.submit(@toolcheck.new_record? ? "Checkout" : "Edit Checkout") %>
+		<% end %>
+	</div>
+</div>
+
+<script>
+$('#datepicker').datepicker({format: 'yyyy-mm-dd'});
+</script>

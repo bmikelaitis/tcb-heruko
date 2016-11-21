@@ -1,0 +1,28 @@
+<%= render 'shared/page_title', title: "Tool Checkout Overview" %>
+<%= form_tag(toolchecks_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Tool Checkout" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+
+<% if @toolchecks.present? %>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+			    <th>Organization Name</th>
+			    <th>Tool Name</th>
+				<th>Type</th>
+				<th>Status</th>
+				<th>Quantity</th>
+				<th>Approved</th>
+				<th>Date Processed</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+  <%= render @toolchecks %>
+  	</table>
+</div>
+<% else %>
+  <p>There are no tool checkouts containing the name <%= params[:search] %>.</p>
+<% end %>

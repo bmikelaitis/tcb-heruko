@@ -33,6 +33,7 @@ class WashesController < ApplicationController
 		@wash = Wash.find(params[:id])
 		if @wash.update(wash_params)
 			flash[:success] = "The wash has been updated succesfully"
+			redirect_to site_path(param_1: @wash.site_id)
 			#redirect_to receipts_path(@user) #TODO change to users_path
 		else
 			render 'edit'

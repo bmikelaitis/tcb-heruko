@@ -4,9 +4,15 @@ class ReportsController < ApplicationController
 
   def index
 	@reports = Report.all
+	if params[:search]
+    	@reports = Report.search(params[:search]).order("created_at DESC")
+	else
+    	@reports = Report.all.order('created_at DESC')
+	end
   end
 
 	def new
+	    @project = Project.find( params[:project_id])
 		@report = Report.new
 	end
 	
@@ -14,13 +20,16 @@ class ReportsController < ApplicationController
       @report = Report.new(report_params)
 
       if @report.save
-        redirect_to :back
+        redirect_to volunteer_path(current_user)
         flash[:success] =  'Your Report was successfully Saved!'
       else
         redirect_to :back
         flash[:success] = "Your Report wasn't Saved!"
       end
     end
+def edit
+		@report = Report.find(params[:id])
+end
     
     def show
             @report = Report.find(params[:id])
@@ -34,6 +43,14 @@ def update
         else
             render 'edit'
         end    
+
+
+ def destroy
+		Report.find(params[:id]).destroy
+		flash[:success] = "Report Deleted"
+		redirect_to reports_path
+ end
+  
 end
  
   private

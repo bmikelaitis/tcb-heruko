@@ -44,6 +44,13 @@ end
 		@site = Site.find(params[:id])
 		if @site.update(site_params)
 			flash[:success] = "The site has been updated succesfully"
+			if @site.subtype == 'Street'
+				redirect_to edit_street_path(param_1: @site.id)
+			elsif @site.subtype == 'Wash'
+				redirect_to edit_wash_path(param_1: @site.id)
+			else 
+				redirect_to edit_park_path(param_1: @site.id)
+			end
 			#redirect_to receipts_path(@user) #TODO change to users_path
 		else
 			render 'edit'
@@ -52,7 +59,7 @@ end
 
 	def show
 		@site = Site.find(params[:id])
-		#@receipts = @user.receipts.order("updated_at DESC")
+		@projects = @site.projects.order("updated_at DESC")
 
 	end
 

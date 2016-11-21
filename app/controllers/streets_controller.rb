@@ -33,6 +33,7 @@ class StreetsController < ApplicationController
 		@street = Street.find(params[:id])
 		if @street.update(street_params)
 			flash[:success] = "The street has been updated succesfully"
+			redirect_to site_path(param_1: @street.site_id)
 			#redirect_to receipts_path(@user) #TODO change to users_path
 		else
 			render 'edit'

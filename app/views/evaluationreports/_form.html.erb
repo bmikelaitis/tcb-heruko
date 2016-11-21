@@ -1,0 +1,17 @@
+<%= form_for @evaluationreport do |f| %>
+<%= f.hidden_field :organization_id, :value => @organization.id %>
+<%= f.hidden_field :admin_id, :value => @user %>
+		<h5>Clean Ups Required:</h5>
+		<%= f.text_field :cleanUpsRequired %>
+		<h5>Period Start Date:</h5> <%= f.text_field :evalPeriodStart, :id => "datepicker", :value => Date.today %>
+		<h5>Period End Date::</h5>
+	   <%= f.text_field :evalPeriodEnd, :id => "datepicker1", :value => Date.today %>
+	
+		<%= f.submit(@evaluationreport.new_record? ? "Submit Report" : "Edit Report") %>
+<% end %>
+		
+
+<script>
+$('#datepicker').datepicker({format: 'yyyy-mm-dd'});
+$('#datepicker1').datepicker({format: 'yyyy-mm-dd'});
+</script>

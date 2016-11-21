@@ -78,3 +78,43 @@ td{
     border-top: 1px solid #c3c9cc;
 }
 
+.right {
+  float: right;
+}
+
+.boarder{
+    width:300px;
+    height:425px;
+    background:#E8E8E8;
+    padding:1px;
+    //border:10px solid #555555;
+    border-radius: 25px;
+    float: left;
+}
+
+.boarder-dash{
+    width:340px;
+    height:645px;
+    background:#E8E8E8;
+    padding:1px;
+    //border:10px solid #555555;
+    border-radius: 25px;
+}
+
+.boarder-park{
+    width:340px;
+    height: 160px;
+    background:#E8E8E8;
+    padding:1px;
+    //border:10px solid #555555;
+    border-radius: 25px;
+}
+
+.boarder-street{
+    width:340px;
+    height:220px;
+    background:#E8E8E8;
+    padding:1px;
+    //border:10px solid #555555;
+    border-radius: 25px;
+}

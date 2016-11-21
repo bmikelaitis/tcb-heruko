@@ -7,16 +7,31 @@
 				<td><%= site.siteZip %></td>
 				<td><%= site.cityWardNumber %></td>
 				<td><%= site.countyDistrict %></td>
+				<% if @var == 0%>
+				<td><%= link_to site_path(site) do %>
+                        <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
+                    <% end %>     
+				<% end %>
 				<% if @var == 1%>
-				<td><%= site.status %></td>
+				
 				<td>   
 				<%= form_for @project do |f| %>
 		<%= f.hidden_field :site_id, :value => site.id %>
 		
 		<%= f.submit "Assign Site"%>
+		</td>
 		<% end %>
+		<% end %>
+		<% if @var == 2%>
+				<td><%= site.status %></td>
+				<td>   
+				<%= form_for @shorttermevent do |f| %>
+				<%= f.hidden_field :site_id, :value => site.id %>
+					<%= f.submit "Assign Site"%>
+				
 				</td>
-				<% end %>
+		<% end %>
+		<% end %>
 			</tr>		
 </tbody>
 	

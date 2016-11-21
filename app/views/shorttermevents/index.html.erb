@@ -1,0 +1,18 @@
+<%= render 'shared/page_title', title: "All Short Term Events" %>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Organization Name</th>
+				<th>Site Type</th>
+				<th>Site Street</th>
+				<th>Event Type</th>
+				<th>Time Frame</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+  <%= render @shorttermevents %>
+  	</table>
+</div>
