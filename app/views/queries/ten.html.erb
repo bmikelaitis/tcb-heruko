@@ -1,0 +1,22 @@
+<%= render 'shared/page_title', title: "Report: Total Tool Count" %>
+
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Tool Name</th>
+				<th>Total Tool Count</th>
+				<th>Tool Description</th>
+			</tr>
+		</thead>
+<% @query.each do |r| %>
+		<tbody>
+			<tr>
+				<td><%= r.toolName %></td>
+				<td><%= r.Count %></td>
+				<td><%= r.description %></td>
+			</tr>		
+		</tbody>
+  <% end %>
+  </table>
+ 

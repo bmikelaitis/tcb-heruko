@@ -17,6 +17,13 @@ class EvaluationreportsController < ApplicationController
 		@evaluationreport = Evaluationreport.new
 	end
 	
+  def destroy
+		@evalutionreport = Evaluationreport.find(params[:id])
+		@evalutionreport.destroy
+		flash[:success] = "Report Deleted"
+		redirect_to evaluationreports_path
+  end
+  
     def create
       @evaluationreport = Evaluationreport.new(evaluationreport_params)
 
@@ -48,11 +55,7 @@ def update
         end    
 
 
- def destroy
-		Evaluationreport.find(params[:id]).destroy
-		flash[:success] = "Report Deleted"
-		redirect_to evaluationreports_path
- end
+
   
 end
  

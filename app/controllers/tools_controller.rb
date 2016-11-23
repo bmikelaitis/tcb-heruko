@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController 
-    def index
+	def index
 		@tools = Tool.all
 		if params[:search]
     		@tools = Tool.search(params[:search]).order("created_at DESC")
@@ -8,9 +8,11 @@ class ToolsController < ApplicationController
 		end
 	end
 
+
 	def new
 		@tool = Tool.new
 	end
+	
 
 	def create 
 		@tool = Tool.new(tool_params)
@@ -23,9 +25,11 @@ class ToolsController < ApplicationController
 		end
 	end
 
+
 	def edit
 		@tool = Tool.find(params[:id])
 	end
+
 
 	def update
 		@tool = Tool.find(params[:id])
@@ -37,10 +41,9 @@ class ToolsController < ApplicationController
 		end
 	end
 
+
 	def show
 		@tool = Tool.find(params[:id])
-		#@receipts = @user.receipts.order("updated_at DESC")
-
 	end
 
 private

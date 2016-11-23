@@ -1,22 +1,27 @@
 class CeremonyawardsController < ApplicationController
 # before_action :admin_user, :current_user, only: :destroy
 # before_action :require_same_user, only: [:edit, :update]
-	# def show
-	# 	@review = Review.find(params[:id])
-	# end
 
-	# def new
-	# 	@review = Review.new
-	# end
 	
-    def index
+  def index
 		
-    end
+  end
+  
+  
 	def new
 		@ceremonyaward = Ceremonyaward.new
 	end
 	
-    def create
+	
+  def destroy
+		@ceremonyaward = Ceremonyaward.find(params[:id])
+		@ceremonyaward.destroy
+		flash[:success] = "Award Deleted"
+		redirect_to :back
+  end
+	
+	
+  def create
       @ceremonyaward = Ceremonyaward.new(award_params)
 
       if @ceremonyaward.save
@@ -26,10 +31,10 @@ class CeremonyawardsController < ApplicationController
         redirect_to :back
         flash[:success] =  "Your Award wasn't posted!"
       end
-    end
+  end
 
 
-def update
+  def update
         @ceremony = Ceremony.find(params[:ceremony_id])
     @ceremonyaward = Ceremonyaward.find(params[:id])
         if @ceremonyaward.update(award_params)
@@ -38,9 +43,8 @@ def update
         else
             render 'edit'
         end    
-    end
+  end
 
- 
  
   private
     def award_params

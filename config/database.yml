@@ -13,8 +13,11 @@ development:
   <<: *default
   encoding: utf8
   database: c9
-  username: <%=ENV['C9_USER']%>
   host: <%=ENV['IP']%>
+  username: <%=ENV['C9_USER']%>
+  password: <%=ENV['PASSWORD']%>
+  
+  
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

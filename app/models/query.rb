@@ -1,12 +1,8 @@
 class Query < ActiveRecord::Base 
     
-    def self.with_tool_count
-    query = <<-SQL
-    SELECT tools.toolName, SUM(tools.totalQuantity) AS Count
-    FROM tools
-    Group by tools.toolName
-    SQL
-
-    end
+def self.search(search)
+  where("created_at LIKE ? OR updated_at LIKE ?", "%#{search}%", "%#{search}%") 
+end
+    
     
 end

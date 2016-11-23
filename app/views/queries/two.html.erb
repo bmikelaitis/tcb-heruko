@@ -1,22 +1,44 @@
-<%= render 'shared/page_title', title: "Report: Total Tool Count" %>
+<%= render 'shared/page_title', title: "Site Assignment Count" %>
+<%= form_tag(querytwo_path, :method => "get", id: "search-form") do %>
+<h4> Specify the Site Type: <%= select_tag :search, options_for_select(['Wash', 'Street', 'Park'])%> <%= submit_tag "Search" %></h4>
 
+<% end %>
+
+<% if @query.present? %>
 <div class="table-container">
 	<table class="data-table">
 		<thead>
+		<% if @var == 1%>
+		<h4>Type of Site:  <%= params[:search] %></h4>
+		<% else %>
+		<h4>All Reports</h4>
+		<% end %>
 			<tr>
-				<th>Tool Name</th>
-				<th>Total Tool Count</th>
-				<th>Tool Description</th>
+				<th>Site Subtype</th>
+				<th>Site Street</th>
+				<th>Site County</th>
+				<th>Site Zipcode</th>
+				<th>Project Count</th>
+				<th>Short Term Event Count</th>
+				<th>Total Sum</th>
 			</tr>
 		</thead>
 <% @query.each do |r| %>
 		<tbody>
 			<tr>
-				<td><%= r.toolName %></td>
-				<td><%= r.Count %></td>
-				<td><%= r.description %></td>
+				<td><%= r.subtype %></td>
+				<td><%= r.siteStreet %></td>
+				<td><%= r.siteCounty %></td>
+				<td><%= r.siteZip %></td>
+				<td><%= r.projectCount %></td>
+				<td><%= r.shortCount %></td>
+				<td><%= r.totalSum %></td>
 			</tr>		
 		</tbody>
-  <% end %>
+	<% end %>
   </table>
+<% else %>
+  <p>There is nothing to report for the Subtype <%= params[:search] %>.</p>
+<% end %>
  
+

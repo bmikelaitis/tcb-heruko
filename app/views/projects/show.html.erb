@@ -1,3 +1,85 @@
-<li><%= link_to "Create a new Ceremony", new_project_ceremony_url(@project) %></li>
-<li><%= link_to "Assign a Site to the Project", new_project_assign_path(@project) %></li>
-<li><%= link_to "Submit a new Report for a Project", new_project_report_path(@project) %></li>
+
+
+<div class="col-lg-offset-1 col-lg-4 col-xs-4 ">
+<div class="boarder-org-info ">
+<div class="col-lg-12 col-xs-12 ">
+                <h3>Project Info</h3> <hr style="height:1px;border:none;color:#333;background-color:#333;">
+				<h4>Project Name: <%= @project.projectName %></h4>
+				<h4>Organization Name: <%= @project.organization.organizationName %></h4>
+				<h4>Project Location: <%= @project.site.siteStreet %></h4>
+				<h4>Yearly Participants: <%= @project.yearlyParticipants %></h4>
+				<h4>If Canceled: <% if @project.ifCanceled == true %>
+                        <div class="glyphicon glyphicon-ok"></div>
+                    <% else %>
+                        <div class="glyphicon glyphicon-remove" style="color:red"></div>
+                    <% end %></h4>
+				<h4>Start Date: <%= @project.startDate.try(:strftime, "%m/%d/%Y") %></h4>
+				
+			
+				<h4><%= link_to "Edit Project", edit_project_path(@project), class:"btn btn-default btn-primary" %></h4>
+
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-xs-4 col-lg-offset-2">
+<div class="boarder-org ">
+<div class="col-lg-12 col-xs-12 col-lg-offset-1">
+	<h3>Project Actions</h3> 
+<%= link_to "Create a new Ceremony", new_project_ceremony_url(@project), class:"btn btn-default btn-primary" %>
+<%= link_to "Assign a Site to the Project", new_project_assign_path(@project), class:"btn btn-default btn-primary" %>
+<%= link_to "Submit a new Report for the Project", new_project_report_path(@project), class:"btn btn-default btn-primary" %>
+				
+</div>
+</div>
+</div>
+
+</br>
+
+
+<div class="col-lg-12">
+<%= render 'shared/page_title', title: "Project Progress Reports"%> 
+</div>
+<div class="col-lg-12">
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Organization Name</th>
+				<th>Project Name</th>
+				<th>Work Done</th>
+				<th>Number of Volunteers</th>
+				<th>Total Hours Worked</th>
+				<th>Date Last Worked</th>
+				<th>Actions</th>
+
+
+			</tr>
+		</thead>
+    <%= render(partial: 'reports/report', collection: @project.reports) %>
+  	</table>
+</div>
+</br>
+
+<div class="col-lg-12">
+<%= render 'shared/page_title', title: "Ceremonies for the Project"%> 
+</div>
+<div class="col-lg-12">
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Organization Name</th>
+				<th>Project Name</th>
+				<th>Ceremony Name</th>
+				<th>Location Preference</th>
+				<th>Agreement Signed</th>
+				<th>Date</th>
+				<th>Actions</th>
+
+			</tr>
+		</thead>
+    <%= render(partial: 'ceremonies/ceremony', collection: @project.ceremonies) %>
+  	</table>
+</div>
+
+

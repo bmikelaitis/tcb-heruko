@@ -1,22 +1,27 @@
 class CeremonynotesController < ApplicationController
 # before_action :admin_user, :current_user, only: :destroy
 # before_action :require_same_user, only: [:edit, :update]
-	# def show
-	# 	@review = Review.find(params[:id])
-	# end
 
-	# def new
-	# 	@review = Review.new
-	# end
 	
-    def index
+  def index
 		
-    end
+  end
+    
+    
 	def new
 		@ceremonynote = Ceremonynote.new
 	end
 	
-    def create
+	
+  def destroy
+		@ceremonynote = Ceremonynote.find(params[:id])
+		@ceremonynote.destroy
+		flash[:success] = "Note Deleted"
+		redirect_to :back
+  end
+  
+  
+  def create
       @ceremonynote = Ceremonynote.new(note_params)
 
       if @ceremonynote.save
@@ -26,10 +31,10 @@ class CeremonynotesController < ApplicationController
         redirect_to :back
         flash[:success] = "Your Note wasn't posted!"
       end
-    end
+  end
 
 
-def update
+  def update
         @ceremony = Ceremony.find(params[:ceremony_id])
     @ceremonynote = Ceremonynote.find(params[:id])
         if @ceremonynote.update(note_params)
@@ -38,9 +43,8 @@ def update
         else
             render 'edit'
         end    
-end
+  end
 
- 
  
   private
     def note_params

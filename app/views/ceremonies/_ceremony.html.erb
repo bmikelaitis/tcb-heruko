@@ -18,6 +18,8 @@
                     <% end %>            
               		  <%= link_to edit_ceremony_path(ceremony) do %>
                         <i class="glyphicon glyphicon-cog" style="color:grey"></i>
-                    <% end %></td> </td>
+                    <% end %>
+                    <%= link_to '',  ceremony,  method: :delete, data: { confirm: 'Are you sure?' }, class:"glyphicon glyphicon-remove cog1" %>
+                    </td> </td>
 			</tr>		
 </tbody>

@@ -11,7 +11,7 @@
 		
 			    <div class="field">
 			      <%= f.hidden_field :organization_id, :value => @organization.id %>
-            <%= f.hidden_field :admin_id, :value => @user %>
+            <%= f.hidden_field :admin_id, :value => current_user.id%>
 
       <div class="modal-body">
           <div class="form-group">

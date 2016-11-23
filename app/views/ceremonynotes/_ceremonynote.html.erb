@@ -1,4 +1,5 @@
 <tr>
 	<td><%= ceremonynote.ceremonyNotes %></td>
     <td> <%= time_ago_in_words(ceremonynote.created_at) %> ago</td>
+    <td><%= link_to '',  ceremonynote,  method: :delete, data: { confirm: 'Are you sure?' }, class:"glyphicon glyphicon-remove cog1" %></td>
 </tr>		

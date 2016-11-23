@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   resources :evaluationreports
   resources :reports
   resources :toolchecks
+  resources :ceremonyawards
+  resources :ceremonynotes
+  resources :signs
   
   resources :shorttermevents do 
     resources :essigns

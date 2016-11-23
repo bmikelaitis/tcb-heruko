@@ -16,6 +16,13 @@ class ReportsController < ApplicationController
 		@report = Report.new
 	end
 	
+def destroy
+		@report = Report.find(params[:id])
+		@report.destroy
+		flash[:success] = "Report Deleted"
+		redirect_to reports_path
+end
+  
     def create
       @report = Report.new(report_params)
 
@@ -43,13 +50,6 @@ def update
         else
             render 'edit'
         end    
-
-
- def destroy
-		Report.find(params[:id]).destroy
-		flash[:success] = "Report Deleted"
-		redirect_to reports_path
- end
   
 end
  

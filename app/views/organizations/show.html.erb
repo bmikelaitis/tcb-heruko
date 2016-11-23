@@ -1,32 +1,68 @@
+<div class="col-lg-offset-1 col-lg-4 col-xs-4 ">
+<div class="boarder-org-info ">
+<div class="col-lg-12 col-xs-12 ">
+                <h3>Organization Information</h3> <hr style="height:1px;border:none;color:#333;background-color:#333;">
+				<h4>Organization Name: <%= @organization.organizationName %></h4>
+				<h4>Organization Street: <%= @organization.organizationStreet %></h4>
+				<h4>Organization City: <%= @organization.organizationCity %></h4>
+				<h4>Organization State: <%= @organization.organizationState %></h4>
+				<h4>Organization Zipcode: <%= @organization.organizationZip %></h4>
+				<h4>Organization Phone: <%= @organization.organizationPhone %></h4>
+			
+				<h4><%= link_to "Edit Organization", edit_organization_path(@organization), class:"btn btn-default btn-primary" %></h4>
+
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-xs-4 col-lg-offset-2">
+<div class="boarder-org ">
+<div class="col-lg-12 col-xs-12 col-lg-offset-1">
+	<h3>Organization Actions</h3> 
+       			<%= render 'newevent' %> 
+				</br>
+				<%= render 'newproject' %>
+				
+<%= link_to "Submit a tool request", new_organization_toolcheck_path(@organization), class:"btn btn-default btn-primary" %>
+
+				</br>
+				<%= render 'neweval' %>
+				
+				
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="col-lg-12">
+<%= render 'shared/page_title', title: "Projects Under the Organization"%> 
+</div>
+<div class="col-lg-12">
 <div class="table-container">
 	<table class="data-table">
 		<thead>
 			<tr>
+				<th>Project Name</th>
 				<th>Organization Name</th>
-				<th>Street Address</th>
-				<th>City</th>
-				<th>State</th>
-				<th>Zip Code</th>
-				<th>Phone Number</th>
-				
+				<th>Project Location</th>
+				<th>Yearly Participants</th>
+				<th>If Canceled</th>
+				<th>Start Date</th>
+				<th>Actions</th>
+
 			</tr>
 		</thead>
-		<tbody>
-			<tr>
-				<td><%= @organization.organizationName %></td>
-				<td><%= @organization.organizationStreet %></td>
-				<td><%= @organization.organizationCity %></td>
-				<td><%= @organization.organizationState %></td>
-				<td><%= @organization.organizationZip %></td>
-				<td><%= @organization.organizationPhone %></td>
-                <%= link_to edit_organization_path do %>
-                        <i class="glyphicon glyphicon-cog" style="color:grey"></i>
-                    <% end %></td> </td>
-			</tr>		
-</tbody>
-</table>
+    <%= render(partial: 'projects/project', collection: @organization.projects) %>
+  	</table>
 </div>
 
+
+
+<div class="col-lg-12">
+<%= render 'shared/page_title', title: "Tools Checked by the Organization"%> 
+</div>
+
+</br>
 <div class="table-container">
 	<table class="data-table">
 		<thead>
@@ -45,39 +81,50 @@
   	</table>
 </div>
 
-<li><%= link_to "Submit a tool request", new_organization_toolcheck_path(@organization) %></li>
+<div class="col-lg-12">
+<%= render 'shared/page_title', title: "Short Term Events by Organization"%> 
+</div>
 
-
+</br>
 <div class="table-container">
 	<table class="data-table">
 		<thead>
 			<tr>
-				<th>Project Name</th>
-				<th>Go To Project</th>
-				<th>Go To Project</th>
-				<th>Go To Project</th>
-				<th>Project Name</th>
-				<th>Go To Project</th>
-				<th>Go To Project</th>
-				
-				
+				<th>Organization Name</th>
+				<th>Site Type</th>
+				<th>Site Street</th>
+				<th>Event Type</th>
+				<th>Time Frame</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Actions</th>
 
 			</tr>
 		</thead>
-    <%= render(partial: 'projects/project', collection: @organization.projects) %>
+    <%= render(partial: 'shorttermevents/shorttermevent', collection: @organization.shorttermevents) %>
   	</table>
 </div>
-<div class="col-lg-3 col-xs-3 col-lg-offset-2">
-<%= render 'newevent' %> 
-</br>
-<%= render 'newproject' %>
-</br>
-<%= render 'neweval' %>
+
+<div class="col-lg-12">
+<%= render 'shared/page_title', title: "Evaluation Report"%> 
 </div>
 
+</br>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Admin Name</th>
+				<th>Organization Name</th>
+				<th>Clean Ups Done</th>
+				<th>Clean Ups Required</th>
+				<th>Evaluation Start Date</th>
+				<th>Evaluation End Date</th>
+				<th>Created At</th>
+				<th>Actions</th>
 
-
-
-
-
-
+			</tr>
+		</thead>
+    <%= render(partial: 'evaluationreports/evaluationreport', collection: @organization.evaluationreports) %>
+  	</table>
+</div>

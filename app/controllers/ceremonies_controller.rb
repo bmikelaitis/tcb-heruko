@@ -14,6 +14,13 @@ class CeremoniesController < ApplicationController
 		@project = Project.find( params[:project_id])
 		@ceremony = Ceremony.new
 	end
+	
+	def destroy
+		@ceremony = Ceremony.find(params[:id])
+		@ceremony.destroy
+		flash[:success] = "Report Deleted"
+		redirect_to ceremonies_path
+	end
 
 	def create 
 		@ceremony = Ceremony.new(ceremony_params)

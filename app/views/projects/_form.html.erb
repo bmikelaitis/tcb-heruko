@@ -1,0 +1,24 @@
+<%= render 'shared/errors', obj: @project %>
+<div>
+	<div>
+		<%= form_for @project do |f| %>
+		
+		<h5>Project Name:</h5>
+		<%= f.text_field :projectName %>
+		<h5>Project Location:</h5>
+		<%= f.text_field :projectLocation %>
+		<h5>Yearly Participants:</h5>
+		<%= f.text_field :yearlyParticipants %>
+		<h5>If Canceled (checked):</h5>
+		<%= f.check_box :ifCanceled %>
+		<h5>Project Start Date:</h5>
+		<%= f.text_field :startDate, :id => "datepicker", :value => Date.today %>
+	
+		<%= f.submit(@project.new_record? ? "Create Project" : "Edit Project") %>
+		<% end %>
+	</div>
+</div>
+
+<script>
+$('#datepicker').datepicker({format: 'yyyy-mm-dd'});
+</script>

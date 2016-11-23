@@ -5,11 +5,11 @@ class ToolchecksController < ApplicationController
   def index
   @var = 1
 	@toolchecks = Toolcheck.all
-	if params[:search]
-    	@toolchecks = Toolcheck.search(params[:search]).order("created_at DESC")
-	else
-    	@toolchecks = Toolcheck.all.order('created_at DESC')
-	end
+	  if params[:search]
+    	  @toolchecks = Toolcheck.search(params[:search]).order("created_at DESC")
+	  else
+    	  @toolchecks = Toolcheck.all.order('created_at DESC')
+	  end
   end
 
 	def new
@@ -17,7 +17,16 @@ class ToolchecksController < ApplicationController
 		@toolcheck = Toolcheck.new
 	end
 	
-    def create
+	
+  def destroy
+		@toolcheck = Toolcheck.find(params[:id])
+		@toolcheck.destroy
+		flash[:success] = "Report Deleted"
+		redirect_to toolchecks_path
+  end
+	
+	
+  def create
       @toolcheck = Toolcheck.new(toolcheck_params)
 
       if @toolcheck.save
@@ -27,18 +36,22 @@ class ToolchecksController < ApplicationController
         redirect_to :back
         flash[:success] = "The Tool was NOT successfully Checked out!"
       end
-    end
-def edit
-		@toolcheck = Toolcheck.find(params[:id])
-end
+  end
+   
     
-    def show
+  def edit
+		@toolcheck = Toolcheck.find(params[:id])
+  end
+    
+    
+  def show
       @var = 0
       @user = current_user_id.id
             @toolcheck = Toolcheck.find(params[:id])
-    end
+  end
 
-def update
+
+  def update
     @toolcheck = Toolcheck.find(params[:id])
         if @toolcheck.update(toolcheck_params)
             flash[:success] = "The Checkout Was Updated!"
@@ -46,15 +59,9 @@ def update
         else
             render 'edit'
         end    
-
-
- def destroy
-		Toolcheck.find(params[:id]).destroy
-		flash[:success] = "Toolcheck Deleted"
-		redirect_to toolchecks_path
- end
   
-end
+  end
+ 
  
   private
     def toolcheck_params

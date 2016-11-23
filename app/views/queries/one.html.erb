@@ -1,9 +1,40 @@
+<%= render 'shared/page_title', title: "Ceremony Report" %>
+<%= form_tag(queryone_path, :method => "get", id: "search-form") do %>
+<h4> Specify the Year: <%= select_tag :search, options_for_select(['2018', '2017', '2016', '2015', '2014', '2013'])%> <%= submit_tag "Search" %></h4>
+
+<% end %>
+
+<% if @query.present? %>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+		<% if @var == 1%>
+		<h4>Report the for year:  <%= params[:search] %></h4>
+		<% else %>
+		<h4>All Reports</h4>
+		<% end %>
+			<tr>
+				<th>Project Name</th>
+				<th>Ceremony Name</th>
+				<th>Number of Signs</th>
+				<th>Number of Awards</th>
+				<th>Date of Ceremony</th>
+			</tr>
+		</thead>
 <% @query.each do |r| %>
-    <li><%= r.toolName %></li>   
-    <li><%= r.Count %></li>   
-    
-  <% end %>
- 
- 
+		<tbody>
+			<tr>
+				<td><%= r.projectName %></td>
+				<td><%= r.ceremonyName %></td>
+				<td><%= r.signCount %></td>
+				<td><%= r.awardCount %></td>
+				<td><%= r.date.try(:strftime, "%m/%d/%Y") %></td>
+			</tr>		
+		</tbody>
+	<% end %>
+  </table>
+<% else %>
+  <p>There is nothing to report for the year <%= params[:search] %>.</p>
+<% end %>
  
 

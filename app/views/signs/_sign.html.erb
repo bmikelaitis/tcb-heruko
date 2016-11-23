@@ -4,4 +4,5 @@
 	<td><%=sign.signPlacement%></td>
 	<td><%=sign.signLocation%></td>
     <td> <%= time_ago_in_words(sign.created_at)%> ago</td>
+    <td><%= link_to '',  sign,  method: :delete, data: { confirm: 'Are you sure?' }, class:"glyphicon glyphicon-remove cog1" %></td>
 </tr>		

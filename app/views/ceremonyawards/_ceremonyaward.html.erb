@@ -3,4 +3,5 @@
 	<td><%= ceremonyaward.ceremonyAwardTitle %></td>
 	<td><%= ceremonyaward.ceremonyAwardInfo %></td>
     <td> <%= time_ago_in_words(ceremonyaward.created_at) %> ago</td>
+    <td><%= link_to '',  ceremonyaward,  method: :delete, data: { confirm: 'Are you sure?' }, class:"glyphicon glyphicon-remove cog1" %></td>
 </tr>		

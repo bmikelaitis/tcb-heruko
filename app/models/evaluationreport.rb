@@ -1,6 +1,6 @@
 class Evaluationreport < ActiveRecord::Base 
     belongs_to :organization
-    belongs_to :volunteer , :foreign_key => "id"
+    belongs_to :volunteer , :foreign_key => "admin_id"
     
     
 def self.search(search)
