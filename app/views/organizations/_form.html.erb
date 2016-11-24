@@ -4,7 +4,7 @@
 		<%= form_for @organization do |f| %>
 		<h5>Organization Name:</h5>
 		<%= f.text_field :organizationName %>
-		<h5>Stree Address:</h5>
+		<h5>Street Address:</h5>
 		<%= f.text_field :organizationStreet %>
 		<h5>City:</h5>
 		<%= f.text_field :organizationCity, :value => 'Tucson' %>
@@ -15,7 +15,7 @@
 		<h5>Phone Number:</h5>
 		<%= f.text_field :organizationPhone, :value => '520'%>
 	
-		<%= f.submit(@organization.new_record? ? "Register" : "Edit Organization") %>
+		<%= f.submit(@organization.new_record? ? "Register" : "Edit Organization", class:"btn btn-primary") %>
 		<% end %>
 	</div>
 </div>
