@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4" data-whatever="@mdo">New Evaluation Report</button>
+<button type="button" id="butt" class="btn btn-primary" onclick="open4()" data-toggle="modal" data-target="#exampleModal4" data-whatever="@mdo">New Evaluation Report</button>
 
 <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4">
   <div class="modal-dialog" role="document">
@@ -39,9 +39,13 @@
 
 
 <script>
-    $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').focus()
-})
+
+$('#exampleModal4').modal('show');
+  $(window).load(function(){
+        $('#exampleModal4').modal('hide');
+    });
+  
+    
 </script>
 <script>
 $('#datepicker4').datepicker({format: 'yyyy-mm-dd'});

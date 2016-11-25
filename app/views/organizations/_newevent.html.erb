@@ -37,9 +37,15 @@
 </div>
 
 <script>
-    $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').focus()
-})
+$('#exampleModal3').modal('show');
+  $(window).load(function(){
+        $('#exampleModal3').modal('hide');
+    });
+    $(window).reload(function(){
+        $('#exampleModal3').modal('hide');
+    });
+
+
 </script>
 <script>
 $('#datepicker').datepicker({format: 'yyyy-mm-dd'});
