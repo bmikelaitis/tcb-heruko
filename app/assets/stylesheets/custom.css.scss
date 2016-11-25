@@ -74,10 +74,13 @@ th, td{
 th{
     background-color: #f5f5f5;
     white-space: nowrap;
+    height: 45px;
+    text-align: center;
 }
 td{
     border-top: 1px solid #c3c9cc;
-    height: 25px;
+    height: 45px;
+    text-align: center;
 }
 
 .right {
