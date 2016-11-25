@@ -12,7 +12,7 @@
 		<h5>Date Requested for Transaction:</h5>
 		<%= f.text_field :dateCheckedOut, :id => "datepicker", :value => Date.today %>
 	
-		<%= f.submit(@toolcheck.new_record? ? "Checkout" : "Edit Checkout") %>
+		<%= f.submit(@toolcheck.new_record? ? "Checkout" : "Edit Checkout", class:"btn btn-primary") %>
 		<% end %>
 	</div>
 </div>

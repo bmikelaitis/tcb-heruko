@@ -15,7 +15,7 @@
 		<h5>Password:</h5>
 		<%= f.password_field :password%>
 	
-		<%= f.submit(@volunteer.new_record? ? "Register" : "Edit Profile") %>
+		<%= f.submit(@volunteer.new_record? ? "Register" : "Edit Profile", class:"btn btn-primary") %>
 		<% end %>
 	</div>
 </div>

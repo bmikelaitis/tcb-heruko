@@ -12,8 +12,8 @@
 				<h4>Created At: <%= @evaluationreport.created_at.try(:strftime, "%m/%d/%Y") %></h4>
 		
                     
-				<h4><%= link_to "Edit Report", edit_evaluationreport_path(@evaluationreport), class:"btn btn-default btn-primary" %></h4>
-				<h4><%= link_to "Go to Organization", organization_path(@evaluationreport.organization), class:"btn btn-default btn-primary" %></h4>
+				<h4><%= link_to "Edit Report", edit_evaluationreport_path(@evaluationreport), class:"btn btn-primary" %></h4>
+				<h4><%= link_to "Go to Organization", organization_path(@evaluationreport.organization), class:"btn btn-primary" %></h4>
 </div>
 </div>
 </div>

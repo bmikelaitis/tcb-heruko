@@ -7,7 +7,7 @@
 		<h5>Period End Date::</h5>
 	   <%= f.text_field :evalPeriodEnd, :id => "datepicker1", :value => Date.today %>
 	
-		<%= f.submit(@evaluationreport.new_record? ? "Submit Report" : "Edit Report") %>
+		<%= f.submit(@evaluationreport.new_record? ? "Submit Report" : "Edit Report", class:"btn btn-primary") %>
 <% end %>
 		
 

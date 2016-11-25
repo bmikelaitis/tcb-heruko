@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base 
     belongs_to :organization
-    has_one :site , :foreign_key => "id"
+    belongs_to :site, :foreign_key => "site_id"
     has_many :ceremonies
     has_many :reports
     

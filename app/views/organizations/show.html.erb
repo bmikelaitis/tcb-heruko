@@ -9,7 +9,7 @@
 				<h4>Organization Zipcode: <%= @organization.organizationZip %></h4>
 				<h4>Organization Phone: <%= @organization.organizationPhone %></h4>
 			
-				<h4><%= link_to "Edit Organization", edit_organization_path(@organization), class:"btn btn-default btn-primary" %></h4>
+				<h4><%= link_to "Edit Organization", edit_organization_path(@organization), class:"btn btn-primary" %></h4>
 
 </div>
 </div>
@@ -22,7 +22,7 @@
 				</br>
 				<%= render 'newproject' %>
 				
-<%= link_to "Submit a tool request", new_organization_toolcheck_path(@organization), class:"btn btn-default btn-primary" %>
+<%= link_to "Submit a tool request", new_organization_toolcheck_path(@organization), class:"btn btn-primary" %>
 
 				</br>
 				<%= render 'neweval' %>

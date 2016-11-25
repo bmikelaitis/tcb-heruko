@@ -12,7 +12,7 @@
 		<h5>Date Last Worked:</h5>
 		<%= f.text_field :dateLastWork, :id => "datepicker", :value => Date.today %>
 	
-		<%= f.submit(@report.new_record? ? "Create Report" : "Edit Report") %>
+		<%= f.submit(@report.new_record? ? "Create Report" : "Edit Report", class:"btn btn-primary") %>
 		<% end %>
 	</div>
 </div>
