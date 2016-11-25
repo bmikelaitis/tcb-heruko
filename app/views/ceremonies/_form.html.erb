@@ -10,7 +10,7 @@
 		<h5>Ceremony Date:</h5>
         <%= f.text_field :date, :id => "datepicker", :value => Date.today %>
 	
-		<%= f.submit(@ceremony.new_record? ? "Create" : "Edit Ceremony") %>
+		<%= f.submit(@ceremony.new_record? ? "Create" : "Edit Ceremony", class:"btn btn-primary") %>
 		<% end %>
 	</div>
 </div>

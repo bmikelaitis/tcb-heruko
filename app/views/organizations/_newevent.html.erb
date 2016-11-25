@@ -1,3 +1,4 @@
+<input type="hidden" id="refresh" value="no">
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3" data-whatever="@mdo">Request New Event</button>
 
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3">
@@ -41,11 +42,12 @@ $('#exampleModal3').modal('show');
   $(window).load(function(){
         $('#exampleModal3').modal('hide');
     });
-    $(window).reload(function(){
-        $('#exampleModal3').modal('hide');
-    });
+$(document).ready(function(e) {
+    var $input = $('#refresh');
 
-
+    $input.val() == 'yes' ? location.reload(true) : $input.val('yes');
+});
+  
 </script>
 <script>
 $('#datepicker').datepicker({format: 'yyyy-mm-dd'});

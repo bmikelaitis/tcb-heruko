@@ -1,3 +1,4 @@
+<input type="hidden" id="refresh" value="no">
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">Add Awards</button>
 
 <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
@@ -31,7 +32,13 @@
 
 
 <script>
-    $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').focus()
-})
+$('#exampleModal1').modal('show');
+  $(window).load(function(){
+        $('#exampleModal1').modal('hide');
+    });
+$(document).ready(function(e) {
+    var $input = $('#refresh');
+
+    $input.val() == 'yes' ? location.reload(true) : $input.val('yes');
+});
 </script>

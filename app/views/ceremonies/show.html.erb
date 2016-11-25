@@ -8,7 +8,7 @@
 			<h4>Location Preference: <%= @ceremony.locationPreference %></h4>
 			<h4>Agreement Signed: <%= @ceremony.agreementSigned %></h4>
 			<h4>Date: <%= @ceremony.date.try(:strftime, "%m/%d/%Y") %></h4>
-			<%= link_to "Edit Ceremony", edit_ceremony_path(@ceremony), class:"btn btn-default btn-primary" %>
+			<%= link_to "Edit Ceremony", edit_ceremony_path(@ceremony), class:"btn btn-primary" %>
         </p>
     </div>
     <div class="col-lg-3 col-xs-3 col-lg-offset-2">
