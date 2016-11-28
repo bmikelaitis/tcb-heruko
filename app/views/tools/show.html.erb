@@ -1,17 +1,14 @@
-<div class="table-container">
-	<table class="data-table">
-		<thead>
-			<tr>
-				<th>Tool Name</th>
-				<th>Total Tool Quantity</th>
-				<th>Tool Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><%= @tool.toolName %></td>
-				<td><%= @tool.totalQuantity %></td>
-				<td><%= @tool.description %></td>
-			</tr>		
-</tbody>
-<div>
+<%= render 'shared/page_title', title: "Tool Information" %>
+<div class="col-lg-offset-1">
+<div class="boarder-tool ">
+<div class="col-lg-12 col-xs-12 ">
+            <h3>Tool Information</h3> <hr style="height:1px;border:none;color:#333;background-color:#333;">
+            <h4>Tool Name: <%= @tool.toolName %></h4>
+            <h4>Total Tool Quantity: <%= @tool.totalQuantity %></h4>
+			<h4>Tool Description: <%= @tool.description %></h4>
+			<h4>Tool Status:<%= @tool.totalQuantity %></h4>
+			<h4>Quantity Rented: <%= @tool.availableQuantity %></h4>
+
+</div>
+</div>
+</div>

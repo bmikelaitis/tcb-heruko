@@ -209,9 +209,10 @@ ActiveRecord::Schema.define(version: 20161119053023) do
   end
 
   create_table "tools", force: :cascade do |t|
-    t.string   "toolName",      limit: 255
-    t.string   "totalQuantity", limit: 255
-    t.string   "description",   limit: 255
+    t.string   "toolName",          limit: 255
+    t.integer  "totalQuantity",     limit: 4
+    t.integer  "availableQuantity", limit: 4
+    t.string   "description",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

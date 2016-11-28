@@ -1,0 +1,25 @@
+<%= link_to "Back", queries_path, class:"btn  btn-primary" %>
+<%= render 'shared/page_title', title: "Report: Number of days between project creation and ceremony" %>
+
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Project Name</th>
+				<th>Number of Reports</th>
+				<th>Sum of Volunteers who attended</th>
+				<th>Sum of hours reported for project</th>
+			</tr>
+		</thead>
+<% @query.each do |r| %>
+		<tbody>
+			<tr>
+				<td><%= r.projectName %></td>
+				<td><%= r.reportCount %></td>
+				<td><%= r.sumVol %></td>
+				<td><%= r.sumHours %></td>
+			</tr>		
+		</tbody>
+  <% end %>
+  </table>
+ 

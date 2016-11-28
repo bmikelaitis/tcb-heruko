@@ -89,7 +89,7 @@ td{
 
 .boarder{
     width:300px;
-    height:425px;
+    height:450px;
     background:#E8E8E8;
     padding:1px;
     //border:10px solid #555555;
@@ -140,6 +140,15 @@ td{
     padding:1px;
     //border:10px solid #555555;
     border-radius: 25px;
+}
+.boarder-tool{
+    width:300px;
+    height:280px;
+    background:#E8E8E8;
+    padding:1px;
+    //border:10px solid #555555;
+    border-radius: 25px;
+    float: left;
 }
 
 .cog1 {

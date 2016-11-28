@@ -21,14 +21,14 @@
 <% if current_user.try(:admin?) %>
 	<div class="container center">
 		<%= render 'shared/errors', obj: @volunteer %>
-			<button type="button" class="btn btn-lg btn-primary collapsed" data-toggle="collapse" data-target="#demo">Admin Password Change</button>
+			<button type="button" class="btn btn-lg btn-success collapsed" data-toggle="collapse" data-target="#demo">Admin Password Change</button>
 	  			<div id="demo" class="collapse">
 	    			<div class="row user_info">
 						<div class="well col-xs- col-lg-8 col-lg-offset-2 col-xs-offset-2 center">
 							<%= form_for @volunteer do |f| %>
 								<h5 class="bold left line_Up">Password:</h5>
 								<%= f.password_field :password%>
-								<%= f.submit(@volunteer.new_record? ? "Register" : "Change Password", class: "btn btn-success") %>
+								<%= f.submit(@volunteer.new_record? ? "Register" : "Change Password", class: "btn btn-primary") %>
 								<% end %>
 	    				</div>
 	    			</div>	

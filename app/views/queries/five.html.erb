@@ -1,0 +1,27 @@
+<%= link_to "Back", queries_path, class:"btn  btn-primary" %>
+<%= render 'shared/page_title', title: "Report: Tool Aggregation for approved Checkouts" %>
+
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Tool Name</th>
+				<th>Total Starting Quantity</th>
+				<th>Description</th>
+				<th>Quantity Rented</th>
+				<th>Quantity Returned</th>
+			</tr>
+		</thead>
+<% @query.each do |r| %>
+		<tbody>
+			<tr>
+				<td><%= r.toolName %></td>
+				<td><%= r.totalQuantity %></td>
+				<td><%= r.description %></td>
+				<td><%= r.quantityRented %></td>
+				<td><%= r.quantityReturned %></td>
+			</tr>		
+		</tbody>
+  <% end %>
+  </table>
+ 

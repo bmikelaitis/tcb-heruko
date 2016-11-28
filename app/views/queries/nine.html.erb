@@ -1,0 +1,27 @@
+<%= link_to "Back", queries_path, class:"btn  btn-primary" %>
+<%= render 'shared/page_title', title: "Report: Organization Summary for Projects, Short Term Events, Ceremonies, and Signs" %>
+
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Organization Name</th>
+				<th>Total Project Count</th>
+				<th>Short Term Event Count</th>
+				<th>Number of Ceremonies</th>
+				<th>Number of Signs</th>
+			</tr>
+		</thead>
+<% @query.each do |r| %>
+		<tbody>
+			<tr>
+				<td><%= r.organizationName %></td>
+				<td><%= r.projectCount %></td>
+				<td><%= r.shortCount %></td>
+				<td><%= r.ceremonyCount %></td>
+				<td><%= r.signCount %></td>
+			</tr>		
+		</tbody>
+  <% end %>
+  </table>
+ 

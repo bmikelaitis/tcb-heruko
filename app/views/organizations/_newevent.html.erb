@@ -39,12 +39,13 @@
 
 <script>
 $('#exampleModal3').modal('show');
-  $(window).load(function(){
-        $('#exampleModal3').modal('hide');
-    });
+
+$('#exampleModal3').modal('hide');
+
+
 $(document).ready(function(e) {
     var $input = $('#refresh');
-
+    
     $input.val() == 'yes' ? location.reload(true) : $input.val('yes');
 });
   

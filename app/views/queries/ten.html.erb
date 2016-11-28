@@ -1,20 +1,25 @@
-<%= render 'shared/page_title', title: "Report: Total Tool Count" %>
+<%= link_to "Back", queries_path, class:"btn  btn-primary" %>
+<%= render 'shared/page_title', title: "Report: Management Infomation for Group Coordinators and their Organization" %>
 
 <div class="table-container">
 	<table class="data-table">
 		<thead>
 			<tr>
-				<th>Tool Name</th>
-				<th>Total Tool Count</th>
-				<th>Tool Description</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Organization Name</th>
+				<th>Coordinator Title</th>
+				<th>Days spent Managing</th>
 			</tr>
 		</thead>
 <% @query.each do |r| %>
 		<tbody>
 			<tr>
-				<td><%= r.toolName %></td>
-				<td><%= r.Count %></td>
-				<td><%= r.description %></td>
+				<td><%= r.firstName %></td>
+				<td><%= r.lastName %></td>
+				<td><%= r.organizationName %></td>
+				<td><%= r.coordinatorTitle %></td>
+				<td><%= r.term %></td>
 			</tr>		
 		</tbody>
   <% end %>

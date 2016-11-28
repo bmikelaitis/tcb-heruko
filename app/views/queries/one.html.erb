@@ -1,3 +1,4 @@
+<%= link_to "Back", queries_path, class:"btn  btn-primary" %>
 <%= render 'shared/page_title', title: "Ceremony Report" %>
 <%= form_tag(queryone_path, :method => "get", id: "search-form") do %>
 <h4> Specify the Year: <%= select_tag :search, options_for_select(['2018', '2017', '2016', '2015', '2014', '2013'])%> <%= submit_tag "Search" %></h4>

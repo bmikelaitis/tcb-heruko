@@ -1,0 +1,25 @@
+<%= link_to "Back", queries_path, class:"btn  btn-primary" %>
+<%= render 'shared/page_title', title: "Report: Site Summary of Type and area details." %>
+
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Site ID</th>
+				<th>Subtype</th>
+				<th>Site Street</th>
+				<th>Area Details</th>
+			</tr>
+		</thead>
+<% @query.each do |r| %>
+		<tbody>
+			<tr>
+				<td><%= r.siteID %></td>
+				<td><%= r.subType %></td>
+				<td><%= r.siteStreet %></td>
+				<td><%= r.areaDetails %></td>
+			</tr>		
+		</tbody>
+  <% end %>
+  </table>
+ 

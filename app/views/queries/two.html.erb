@@ -1,3 +1,4 @@
+<%= link_to "Back", queries_path, class:"btn  btn-primary" %>
 <%= render 'shared/page_title', title: "Site Assignment Count" %>
 <%= form_tag(querytwo_path, :method => "get", id: "search-form") do %>
 <h4> Specify the Site Type: <%= select_tag :search, options_for_select(['Wash', 'Street', 'Park'])%> <%= submit_tag "Search" %></h4>

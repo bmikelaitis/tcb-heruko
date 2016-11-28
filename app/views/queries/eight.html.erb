@@ -1,0 +1,46 @@
+<%= link_to "Back", queries_path, class:"btn  btn-primary" %>
+<%= render 'shared/page_title', title: "Evaluation Reporting" %>
+<%= form_tag(queryeight_path, :method => "get", id: "search-form") do %>
+<h4> Specify the Start Date: <%= select_tag :startyear, options_for_select(['2015', '2016', '2017']) %> <%= select_tag :beginmonth, options_for_select(['01', '02', '03','04', '05', '06','07', '08', '09', '10', '11', '12']) %> <%= select_tag :beginday, options_for_select(['01', '02', '03','04', '05', '06','07', '08', '09', '10', '11', '12','13', '14', '15','16', '17', '18','19', '20', '21', '22', '23', '24','25', '26', '27','28', '29', '30','31']) %> </h4>
+<h4> Specify the End Date: <%= select_tag :endyear, options_for_select(['2015', '2016', '2017']) %> <%= select_tag :endmonth, options_for_select(['01', '02', '03','04', '05', '06','07', '08', '09', '10', '11', '12']) %> <%= select_tag :endday, options_for_select(['01', '02', '03','04', '05', '06','07', '08', '09', '10', '11', '12','13', '14', '15','16', '17', '18','19', '20', '21', '22', '23', '24','25', '26', '27','28', '29', '30','31']) %> </h4>
+<h4><%= submit_tag "Search" %></h4>
+
+<% end %>
+
+<% if @query.present? %>
+<div class="table-container">
+	<table class="data-table">
+		<thead>
+		<% if @var == 1%>
+		<h4>Reported Generate for Start Date: <%= params[:beginmonth]%>/<%= params[:beginday]%>/<%= params[:startyear]%> to <%= params[:endmonth]%>/<%= params[:endday]%>/<%= params[:endyear]%></h4>
+		<% else %>
+		<h4>All Reports</h4>
+		<% end %>
+			<tr>
+				<th>Organization ID</th>
+				<th>Organization Name</th>
+				<th>Clean Ups Performed</th>
+				<th>Required Cleanups</th>
+				<th>Evaluation Period Begin Date</th>
+				<th>Evaluation Period End Date</th>
+				<th>Last Updated At</th>
+			</tr>
+		</thead>
+<% @query.each do |r| %>
+		<tbody>
+			<tr>
+				<td><%= r.organizationID %></td>
+				<td><%= r.organizationName %></td>
+				<td><%= r.cleanupsPerformed %></td>
+				<td><%= r.requiredCleanups %></td>
+				<td><%= r.evaluationPeriodBeginDate.try(:strftime, "%m/%d/%Y") %></td>
+				<td><%= r.evaluationPeriodEndDate.try(:strftime, "%m/%d/%Y") %></td>
+				<td><%= r.lastUpdateOn.try(:strftime, "%m/%d/%Y") %></td>
+			</tr>		
+		</tbody>
+	<% end %>
+  </table>
+<% else %>
+  <p>There is nothing to report for the dates : <%= params[:beginmonth]%>/<%= params[:beginday]%>/<%= params[:startyear]%> to <%= params[:endmonth]%>/<%= params[:endday]%>/<%= params[:endyear]%>.</p>
+<% end %>
+ 
