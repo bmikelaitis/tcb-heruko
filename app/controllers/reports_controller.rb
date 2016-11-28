@@ -3,6 +3,7 @@ class ReportsController < ApplicationController
 # before_action :require_same_user, only: [:edit, :update]
 
   def index
+    @var = 4
 	@reports = Report.all
 	if params[:search]
     	@reports = Report.search(params[:search]).order("created_at DESC")

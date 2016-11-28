@@ -1,1 +1,32 @@
-<li><%= link_to "Assign a Site to the Event", new_shorttermevent_essign_path(@shorttermevent) %></li>
+<div class="col-lg-offset-1 col-lg-4 col-xs-4 ">
+<div class="boarder-short-info ">
+<div class="col-lg-12 col-xs-12 ">
+                <h3>Short Term Event Information</h3> <hr style="height:1px;border:none;color:#333;background-color:#333;">
+				<h4>Organization Name: <%= @shorttermevent.organization.organizationName %></h4>
+				<h4>Site Name: <%= @shorttermevent.site.siteStreet %></h4>
+				<h4>Event Type: <%= @shorttermevent.eventtype %></h4>
+				<h4>Time Frame: <%= @shorttermevent.timeFrame %></h4>
+				<h4>Start Date: <%= @shorttermevent.startDate.try(:strftime, "%m/%d/%Y") %></h4>
+				<h4>End Date: <%= @shorttermevent.endDate.try(:strftime, "%m/%d/%Y") %></h4>
+				<h4>Created At: <%= @shorttermevent.created_at.try(:strftime, "%m/%d/%Y") %></h4>
+			
+
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-xs-4 col-lg-offset-2">
+<div class="boarder-org ">
+<div class="col-lg-12 col-xs-12 col-lg-offset-1">
+	<h3>Short Term Event Actions</h3> 
+       <%= link_to "Assign a Site to the Event", new_shorttermevent_essign_path(@shorttermevent),class: "btn btn-primary" %>
+				
+				
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+

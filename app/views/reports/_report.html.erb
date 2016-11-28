@@ -7,9 +7,10 @@
 				<td><%= report.totalHours %></td>
 				<td><%= report.dateLastWork.try(:strftime, "%m/%d/%Y") %></td>
 			
-                <td><%= link_to project_path(report.project) do %>
+                <td>	<% if @var == 4%><%= link_to project_path(report.project) do %>
                         <i class="glyphicon glyphicon-info-sign" style="color:#377bb5"></i>
-                    <% end %>            
+                    <% end %>
+                    <% end %>   
               		  <%= link_to edit_report_path(report) do %>
                         <i class="glyphicon glyphicon-cog" style="color:grey"></i>
                         <% end %>

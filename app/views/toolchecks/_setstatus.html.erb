@@ -1,6 +1,6 @@
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">Set Status</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLabel2" data-whatever="@mdo">Set Status</button>
 
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2">
+<div class="modal fade" id="exampleModalLabel2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -27,7 +27,7 @@
 
 
 <script>
-    $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').focus()
-})
+    $('#exampleModalLabel2').modal('show');
+
+    $('#exampleModalLabel2').modal('hide');
 </script>
