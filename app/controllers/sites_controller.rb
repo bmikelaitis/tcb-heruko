@@ -59,6 +59,25 @@ end
 
 	def show
 		@site = Site.find(params[:id])
+		@subtype = @site.subtype
+		if @subtype == 'Street'
+		@street = Site.street.find(params[:id])
+			if @site.street == nil
+				@site.destroy
+				redirect_to root_path
+			end
+		elsif @subtype == 'Wash'
+			if @site.wash == nil
+				@site.destroy
+				redirect_to root_path
+			end
+		else @subtype == 'Park'
+			if @site.park == nil
+				@site.destroy
+				redirect_to root_path
+			end
+		end
+		
 		@projects = @site.projects.order("updated_at DESC")
 
 	end
