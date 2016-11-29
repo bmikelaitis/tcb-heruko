@@ -22,7 +22,7 @@ class VolunteersController < ApplicationController
 		if @volunteer.save
 			flash[:success] = "Your account has been created succesfully"
 			session[:volunteer_id] = @volunteer.id
-			redirect_to    volunteers_path
+			redirect_to    volunteer_path(current_user)
 		else
 			render 'new'
 		end

@@ -16,7 +16,7 @@
 		         
 </br>
 </br>
-        <% if current_user.try(:admin?)  %>
+        <% if current_user.try(:admin?) &! same_admin_user(@volunteer) %>
     	    <%= form_for @volunteer do |f| %>
     	    <h4> Set User as Admin</h4>
                 <h5>Admin User? <%= f.check_box :admin %></h5>
