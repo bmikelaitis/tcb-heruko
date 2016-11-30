@@ -39,11 +39,11 @@ def edit
 		@evaluationreport = Evaluationreport.find(params[:id])
 end
     
-    def show
-      @var = 0
-      @user = current_user_id.id
-            @evaluationreport = Evaluationreport.find(params[:id])
-    end
+def show
+    @var = 0
+    @user = current_user_id.id
+    @evaluationreport = Evaluationreport.find(params[:id])
+end
 
 def update
     @evaluationreport = Evaluationreport.find(params[:id])
@@ -54,9 +54,6 @@ def update
             render 'edit'
         end    
 
-
-
-  
 end
  
   private
