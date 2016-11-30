@@ -35,7 +35,7 @@ class ToolsController < ApplicationController
 		@tool = Tool.find(params[:id])
 		if @tool.update(tool_params)
 			flash[:success] = "The Tool has been updated succesfully"
-			#redirect_to receipts_path(@user) #TODO change to users_path
+			redirect_to tools_path(@tool) #TODO change to users_path
 		else
 			render 'edit'
 		end

@@ -4,10 +4,10 @@ class QueriesController < ApplicationController
     end
     
     def one
-        @query = Tool.find_by_sql( "SELECT p.projectName, c.ceremonyName, count(s.id) AS signCount, count(distinct(a.id)) AS awardCount, c.date FROM projects p, ceremonies c LEFT JOIN signs s ON c.id = s.ceremony_id LEFT JOIN ceremonyawards a ON c.id = a.ceremony_id WHERE p.id = c.project_id GROUP BY c.ceremonyName, p.projectName") 
+        @query = Tool.find_by_sql( "SELECT p.projectName, c.ceremonyName, count(s.id) AS signCount, count(distinct(a.id)) AS awardCount, c.date FROM projects p, ceremonies c LEFT JOIN signs s ON c.id = s.ceremony_id LEFT JOIN ceremonyawards a ON c.id = a.ceremony_id WHERE p.id = c.project_id GROUP BY p.id") 
 		if params[:search]
 		    
-		    @query = Project.find_by_sql( "SELECT p.projectName, c.ceremonyName, count(s.id) AS signCount, count(distinct(a.id)) AS awardCount, c.date FROM projects p, ceremonies c LEFT JOIN signs s ON c.id = s.ceremony_id LEFT JOIN ceremonyawards a ON c.id = a.ceremony_id WHERE p.id = c.project_id AND c.date LIKE '%#{params[:search]}%' GROUP BY c.ceremonyName, p.projectName") 
+		    @query = Project.find_by_sql( "SELECT p.projectName, c.ceremonyName, count(s.id) AS signCount, count(distinct(a.id)) AS awardCount, c.date FROM projects p, ceremonies c LEFT JOIN signs s ON c.id = s.ceremony_id LEFT JOIN ceremonyawards a ON c.id = a.ceremony_id WHERE p.id = c.project_id AND c.date LIKE '%#{params[:search]}%' GROUP BY p.id") 
             @var = 1		
 		end
     end
@@ -26,7 +26,7 @@ class QueriesController < ApplicationController
     end
     
     def four
-        @query = Tool.find_by_sql( "SELECT p.projectName, count(r.id) as reportCount, IFNULL(sum(r.numVolunteers),0) AS sumVol, IFNULL(sum(r.totalHours),0) AS sumHours  FROM c9.projects p LEFT JOIN c9.reports r ON p.id = r.project_id GROUP BY p.projectName;")
+        @query = Tool.find_by_sql( "SELECT p.projectName, count(r.id) as reportCount, IFNULL(sum(r.numVolunteers),0) AS sumVol, IFNULL(sum(r.totalHours),0) AS sumHours  FROM c9.projects p LEFT JOIN c9.reports r ON p.id = r.project_id GROUP BY p.id;")
     end
     
     def five

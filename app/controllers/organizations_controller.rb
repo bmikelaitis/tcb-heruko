@@ -45,7 +45,7 @@ class OrganizationsController < ApplicationController
 		@organization = Organization.find(params[:id])
 		if @organization.update(organization_params)
 			flash[:success] = "Your account has been updated succesfully"
-			#redirect_to receipts_path(@user) #TODO change to users_path
+			redirect_to organizations_path(@organization) #TODO change to users_path
 		else
 			render 'edit'
 		end
